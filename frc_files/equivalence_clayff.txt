@@ -1,0 +1,110 @@
+# Equivalence reference: clayff.frc
+# Detected LAMMPS family: class1
+# Generated from the force field itself; matching is case-sensitive.
+# A self mapping means the file supplies no broader standard equivalence.
+
+# Standard equivalence table
+# Type NonB Bond [BondInct] Angle Torsion OOP
+st st st st st st
+ao ao ao ao ao ao
+at at at at at at
+mgo mgo mgo mgo mgo mgo
+mgh mgh mgh mgh mgh mgh
+cao cao cao cao cao cao
+cah cah cah cah cah cah
+feo feo feo feo feo feo
+lio lio lio lio lio lio
+ob ob ob ob ob ob
+obss obss obss obss obss obss
+obts obts obts obts obts obts
+obos obos obos obos obos obos
+ohs ohs ohs ohs ohs ohs
+oh oh oh oh oh oh
+oh- oh- oh- oh- oh- oh-
+o* o* o* o* o* o*
+ho ho ho ho ho ho
+h* h* h* h* h* h*
+Na Na Na Na Na Na
+K K K K K K
+Cs Cs Cs Cs Cs Cs
+Ca Ca Ca Ca Ca Ca
+Ba Ba Ba Ba Ba Ba
+Mg Mg Mg Mg Mg Mg
+Sr Sr Sr Sr Sr Sr
+Pb Pb Pb Pb Pb Pb
+Cl Cl Cl Cl Cl Cl
+h h h h h h
+
+# Automatic equivalence table
+# Type NonB BondInct Bond AngleEnd AngleApex TorsionEnd TorsionCenter OOPEnd OOPCenter
+h h h h_ h_ h_ h_ h_ h_ h_
+
+# Atom metadata and explicit parameter participation
+# Type Element Mass Connections NonB Bond Angle Torsion OOP Cross Description
+st Si 28.08550000 4 Y N N N N N tetrahedral silicon 2.1
+ao Al 26.98154000 6 Y N N N N N octahedral aluminum 1.575
+at Al 26.98154000 4 Y N N N N N tetrahedral aluminum 1.575
+mgo Mg 24.30500000 6 Y N N N N N octahedral magnesium 1.36
+mgh Mg 24.30500000 6 Y N N N N N hydroxide magnesium 1.05
+cao Ca 40.08000000 6 Y N N N N N octahedral calcium 1.36
+cah Ca 40.08000000 6 Y N N N N N hydroxide calcium 1.05
+feo Fe 55.84700000 6 Y N N N N N octahedral iron 1.575
+lio Li 6.94100000 6 Y N N N N N octahedral lithium 0.525
+ob O 15.99940000 2 Y N N N N N bridging oxygen -1.05
+obss O 15.99940000 3 Y N N N N N oxygen double sub. -1.2996
+obts O 15.99940000 2 Y N N N N N oxygen tet. sub. -1.1688
+obos O 15.99940000 2 Y N N N N N oxygen oct. sub. -1.1808
+ohs O 15.99940000 2 Y Y N N N N hydroxyl O sub. -1.0808
+oh O 15.99940000 2 Y Y N N N N hydroxyl O -0.95
+oh- O 15.99940000 1 Y N N N N N hydroxide O
+o* O 15.99940000 2 Y Y Y N N N spc water O -0.82
+ho H 1.00797000 1 Y Y N N N N hydroxyl H 0.425
+h* H 1.00797000 1 Y Y Y N N N spc water H 0.41
+Na Na 22.99000000 0 Y N N N N N sodium ion 1.0
+K K 39.10000000 0 Y N N N N N potassium ion 1.0
+Cs Cs 132.91000000 0 Y N N N N N cesium ion 1.0
+Ca Ca 40.07980000 0 Y N N N N N calcium ion 2.0
+Ba Ba 137.33000000 0 Y N N N N N barium ion 2.0
+Mg Mg 24.30500000 0 Y N N N N N magnesium ion 2.0
+Sr Sr 87.62000000 0 Y N N N N N strontium ion 2.0
+Pb Pb 207.20000000 0 Y N N N N N lead ion 2.0
+Cl Cl 35.45300000 0 Y N N N N N chloride ion -1.0
+h ? 0.00000000 - N N N N N N
+
+# general_assumed_equivs.coeffs: active Bond Coeff mappings
+# Elements -> assumed FF key : availability in this .frc
+C-C -> c_-c_ : UNAVAILABLE
+H-H -> h_-h_ : UNAVAILABLE
+O-O -> o_-o_ : UNAVAILABLE
+N-N -> n_-n_ : UNAVAILABLE
+S-S -> s_-s_ : UNAVAILABLE
+C-H -> c_-h_ : UNAVAILABLE
+C-O -> c-o : UNAVAILABLE
+C-N -> c_-n_ : UNAVAILABLE
+C-S -> c_-s_ : UNAVAILABLE
+T-T -> t-t : UNAVAILABLE
+C-C -> C-c_ : UNAVAILABLE
+O-O -> O-* : UNAVAILABLE
+N-N -> N-* : UNAVAILABLE
+S-S -> S-* : UNAVAILABLE
+C-O -> C-* : UNAVAILABLE
+C-O -> H-*7 : UNAVAILABLE
+C-C -> O-c_ : UNAVAILABLE
+T-T -> T-t : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-O -> C-C : UNAVAILABLE
+C-C -> O-H : UNAVAILABLE
+O-C -> O-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-C -> H-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+
+# Parameter sections parsed
+nonbond(12-6) out_of_plane quadratic_angle quadratic_bond torsion_1

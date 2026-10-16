@@ -1,0 +1,16 @@
+# One equivalence reference per force field
+
+equivalence_all2lmp_dreiding.txt
+equivalence_all2lmp_oplsaa_tinker.txt
+equivalence_all2lmp_reaxff.txt
+equivalence_cff91.txt
+equivalence_clayff.txt
+equivalence_compass_published.txt
+equivalence_cvff.txt
+equivalence_cvff_aug.txt
+equivalence_cvff_interface_v1_5.txt
+equivalence_oplsaa.txt
+equivalence_pcff.txt
+equivalence_pcff_iff_v1_5_CNT_poly_solv.txt
+equivalence_pcff_iff_v1_5_CNT_poly_solv_hpan_hc_mod.txt
+equivalence_pcff_interface_v1_5.txt

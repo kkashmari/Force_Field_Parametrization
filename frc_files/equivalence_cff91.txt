@@ -1,0 +1,344 @@
+# Equivalence reference: cff91.frc
+# Detected LAMMPS family: class2
+# Generated from the force field itself; matching is case-sensitive.
+# A self mapping means the file supplies no broader standard equivalence.
+
+# Standard equivalence table
+# Type NonB Bond [BondInct] Angle Torsion OOP
+c c c c c c
+c3 c c c c c
+c2 c c c c c
+co c c c c c
+c3m c c c c c
+c4m c c c c c
+coh c c c c c
+c3h c c c c c
+c4h c c c c c
+c1 c c c c c
+ca c c c c c
+cg c c c c c
+c= c= c= c= c= c=
+c=1 c= c=1 c= c=1 c=
+c=2 c= c=2 c= c=2 c=
+c* c* c* c* c* c*
+c" c* c* c* c* c*
+c' c' c' c' c' c'
+cp cp cp cp cp cp
+c5 cp cp cp cp cp
+c- c- c- c- c- c-
+cr cr cr cr cr cr
+c+ c+ c+ c+ c+ c+
+cs cp cp cp cp cp
+ci cp cp cp cp cp
+ct c= ct ct ct ct
+ct2 c= ct2 ct2 ct2 ct2
+na na na na na na
+n3m na na na na na
+n4m na na na na na
+n3n n n n n n
+n4n n n n n n
+nb nn nn nn nn nn
+nn nn nn nn nn nn
+n n n n n n
+np np np np np np
+npc nh nh nh nh nh
+nh nh nh nh nh nh
+nho nh nh nh nh nh
+nh+ nh nh+ nh nh nh
+n+ n+ n+ n+ n+ n+
+n4 n+ n+ n+ n+ n+
+nr nr nr nr nr nr
+n= n= n= n= n= n=
+n=1 n= n=1 n= n=1 n=
+n=2 n= n=2 n= n=2 n=
+ni nh nh nh nh nh
+n1 nr nr nr nr nr
+n2 nr nr nr nr nr
+nt n= nt nt nt nt
+nz n= nz nz nz nz
+o o o o o o
+oh o o o o o
+oc o o o o o
+oe o o o o o
+o3e o o o o o
+o4e o o o o o
+o' o' o' o' o' o'
+op op op op op op
+o* o* o* o* o* o*
+o- o- o- o- o- o-
+h h h h h h
+h* h* h* h* h* h*
+h+ h+ h+ h+ h+ h+
+hs h h h h h
+hc h h h h h
+hp h h h h h
+ho h* h* h* h* h*
+hn h* h* h* h* h*
+hi h* hi h* h* h*
+hw h* h* h* h* h*
+dw h* h* h* h* h*
+s s s s s s
+sc s s s s s
+s3e s s s s s
+s4e s s s s s
+s1 s s s s s
+sh s s s s s
+sp sp sp sp sp sp
+s' sp s' s' s' s'
+s- sp s- s- s- s-
+p p p p p p
+si si si si si si
+ca+ ca+ ca+ ca+ ca+ ca+
+f f f f f f
+cl cl cl cl cl cl
+Cl Cl Cl Cl Cl Cl
+br br br br br br
+Br Br Br Br Br Br
+i i i i i i
+Na Na Na Na Na Na
+lp lp lp lp lp lp
+ar ar ar ar ar ar
+pz p p p p p
+sz sz sz sz sz sz
+nu nu nu nu nu nu
+d d d d d d
+cn cn cn cn cn cn
+
+# Automatic equivalence table
+# Type NonB BondInct Bond AngleEnd AngleApex TorsionEnd TorsionCenter OOPEnd OOPCenter
+c c c c_ c_ c_ c_ c_ c_ c_
+c3 c c c_ c_ c_ c_ c_ c_ c_
+c2 c c c_ c_ c_ c_ c_ c_ c_
+co c c c_ c_ c_ c_ c_ c_ c_
+c3m c c c3m_ c3m_ c3m_ c_ c_ c_ c_
+c4m c c c4m_ c4m_ c4m_ c_ c_ c_ c_
+coh c c c_ c_ c_ c_ c_ c_ c_
+c3h c c c3m_ c3m_ c3m_ c_ c_ c_ c_
+c4h c c c4m_ c4m_ c4m_ c_ c_ c_ c_
+c1 c c c_ c_ c_ c_ c_ c_ c_
+ca c c c_ c_ c_ c_ c_ c_ c_
+cg c c c_ c_ c_ c_ c_ c_ c_
+c= c= c= c=_3 c_ c=_ c_ c=_3 c_ c=_
+c=1 c= c= c=_1 c_ c=_ c_ c=_1 c_ c=_
+c=2 c= c= c=_2 c_ c=_ c_ c=_2 c_ c=_
+c* c* c* c'_ c_ c'_ c_ c'_ c_ c'_
+c" c* c* c'_ c_ c'_ c_ c'_ c_ c'_
+c' c' c' c'_ c_ c'_ c_ c'_ c_ c'_
+cp cp cp cp_ c_ cp_ c_ cp_ c_ cp_
+c5 cp cp cp_ c_ cp_ c_ cp_ c_ cp_
+c- c- c- c'_ c_ c'_ c_ c'_ c_ c'_
+cr cr cr cr_ c_ c'_ c_ c=_3 c_ c'_
+c+ c+ c+ cr_ c_ c'_ c_ c+_ c_ c'_
+cs cp cp cp_ c_ cp_ c_ cp_ c_ cp_
+ci cp ci cp_ c_ cp_ c_ cp_ c_ cp_
+ct c= ct ct_ c_ ct_ c_ ct_ c_ ct_
+ct2 c= ct ct2_ c_ ct2_ c_ ct_ c_ ct_
+na na na na_ n_ na_ n_ na_ n_ na_
+n3m na na n3m_ n3m_ n3m_ n_ na_ n_ na_
+n4m na na n4m_ n4m_ n4m_ n_ na_ n_ na_
+n3n n n n3m_ n3m_ n3m_ n_ n3n_ n_ n_
+n4n n n n4m_ n4m_ n4m_ n_ n_ n_ n_
+nb nn nn np_ n_ n_ n_ n_ n_ n_
+nn nn nn na_ n_ n_ n_ n_ n_ n_
+n n n n_ n_ n_ n_ n_ n_ n_
+np np np np_ n_ np_ n_ np_ n_ np_
+npc nh nh np_ n_ np_ n_ np_ n_ np_
+nh nh nh np_ n_ np_ n_ np_ n_ np_
+nho nh nh np_ n_ np_ n_ np_ n_ np_
+nh+ nh nh+ np_ n_ np_ n_ np_ n_ np_
+n+ n+ n+ n+_ n_ na_ n_ na_ n_ na_
+n4 n+ n+ n+_ n_ na_ n_ na_ n_ na_
+nr nr nr n_ n_ n_ n_ n_ n_ nr_
+n= n= n= n=_3 n_ n_ n_ n=_3 n_ n=_
+n=1 n= n= n=_1 n_ n_ n_ n=_1 n_ n=_
+n=2 n= n= n=_2 n_ n_ n_ n=_2 n_ n=_
+ni nh nh np_ n_ np_ n_ np_ n_ np_
+n1 nr nr n_ n_ n_ n_ n_ n_ nr_
+n2 nr nr n_ n_ n_ n_ n_ n_ nr_
+nt nt nt nt_ n_ nt_ n_ nt_ n_ nt_
+nz nz nz nz_ n_ nz_ n_ nz_ n_ nz_
+o o o o_ o_ o_ o_ o_ o_ o_
+oh o o o_ o_ o_ o_ o_ o_ o_
+oc o o o_ o_ o_ o_ o_ o_ o_
+oe o o o_ o_ o_ o_ o_ o_ o_
+o3e o o o3e_ o3e_ o3e_ o_ o_ o_ o_
+o4e o o o4e_ o4e_ o4e_ o_ o_ o_ o_
+o' o' o' o'_ o'_ o_ o_ o_ o_ o_
+op op op op_ o_ op_ o_ o_ o_ op_
+o* o* o* o_ o_ o*_ o_ o_ o_ o_
+o- o- o- o-_ o'_ o_ o_ o_ o_ o_
+h h h h_ h_ h_ h_ h_ h_ h_
+h* h* h* h_ h_ h_ h_ h_ h_ h_
+h+ h+ h+ h_ h_ h_ h_ h_ h_ h_
+hs h h h_ h_ h_ h_ h_ h_ h_
+hc h h h_ h_ h_ h_ h_ h_ h_
+hp h h h_ h_ h_ h_ h_ h_ h_
+ho h* h* h_ h_ h_ h_ h_ h_ h_
+hn h* h* h_ h_ h_ h_ h_ h_ h_
+hi h* hi h_ h_ h_ h_ h_ h_ h_
+hw h* h* h_ h_ h_ h_ h_ h_ h_
+dw h* h* h_ h_ h_ h_ h_ h_ h_
+s s s s_ s_ s_ s_ s_ s_ s_
+sc s s s_ s_ s_ s_ s_ s_ s_
+s3e s s s3e_ s3e_ s3e_ s_ s_ s_ s_
+s4e s s s4e_ s4e_ s4e_ s_ s_ s_ s_
+s1 s s s_ s_ s_ s_ s_ s_ s_
+sh s s s_ s_ s_ s_ s_ s_ s_
+sp sp sp sp_ s_ sp_ s_ sp_ s_ sp_
+s' s s' s'_ s'_ s_ s_ s_ s_ s_
+s- s s- s-_ s'_ s_ s_ s_ s_ s_
+p p p p_ p_ p_ p_ p_ p_ p_
+si si si si_ si_ si_ si_ si_ si_ si_
+ca+ ca+ ca+ ca+_ ca+_ ca+_ ca+_ ca+_ ca+_ ca+_
+f f f f_ f_ f_ f_ f_ f_ f_
+cl cl cl cl_ f_ cl_ cl_ cl_ cl_ cl_
+Cl Cl Cl Cl_ Cl_ Cl_ Cl_ Cl_ Cl_ Cl_
+br br br br_ f_ br_ br_ br_ br_ br_
+Br Br Br Br_ Br_ Br_ Br_ Br_ Br_ Br_
+i i i i_ f_ i_ i_ i_ i_ i_
+Na Na Na Na_ Na_ Na_ Na_ Na_ Na_ Na_
+ar ar ar ar_ ar_ ar_ ar_ ar_ ar_ ar_
+pz p p p_ p_ p_ p_ p_ p_ p_
+sz sz sz sz_ sz_ sz_ sz_ sz_ sz_ sz_
+nu nu nu nu_ nu_ nu_ nu_ nu_ nu_ nu_
+d h h h_ h_ h_ h_ h_ h_ h_
+cn c c c_ c_ c_ c_ c_ c_ c_
+
+# Atom metadata and explicit parameter participation
+# Type Element Mass Connections NonB Bond Angle Torsion OOP Cross Description
+c C 12.01115000 4 Y Y Y Y Y Y generic SP3 carbon
+c3 C 12.01115000 4 N N N N N N sp3 carbon with 3 hHs 1 heavy
+c2 C 12.01115000 4 N N N N N N sp3 carbon with 2 H's, 2 Heavy's
+co C 12.01115000 4 N N N N N N sp3 carbon in acetals
+c3m C 12.01115000 4 N N N N N N sp3 carbon in 3-membered ring
+c4m C 12.01115000 4 N N N N N N sp3 carbon in 4-membered ring
+coh C 12.01115000 4 N N N N N N sp3 carbon in acetals with hydrogen
+c3h C 12.01115000 4 N N N N N N sp3 carbon in 3-membered ring with hydrogens
+c4h C 12.01115000 4 N N N N N N sp3 carbon in 4-membered ring with hydrogens
+c1 C 12.01115000 4 N N N N N N sp3 carbon with 1 H 3 heavies
+ca C 12.01115000 4 N N N N N N general amino acid alpha carbon (sp3)
+cg C 12.01115000 4 N N N N N N sp3 alpha carbon in glycine
+c= C 12.01115000 3 Y Y Y Y Y Y non aromatic end doubly bonded carbon
+c=1 C 12.01115000 3 Y Y Y Y N Y non aromatic, next to end doubly bonded carbon
+c=2 C 12.01115000 3 Y Y Y Y N Y non aromatic doubly bonded carbon
+c* C 12.01115000 3 Y Y Y Y Y Y carbon in carbonyl group, non_amides
+c" C 12.01115000 3 N N N N N N carbon in carbonyl group, non_amides
+c' C 12.01115000 3 Y Y Y Y Y Y carbon in carbonyl group of amides
+cp C 12.01115000 3 Y Y Y Y Y Y sp2 aromatic carbon
+c5 C 12.01115000 3 N N N N N N sp2 aromatic carbon in 5-membered ring
+c- C 12.01115000 3 Y Y Y Y Y Y C in charged carboxylate
+cr C 12.01115000 3 Y Y Y Y Y Y C in neutral arginine
+c+ C 12.01115000 3 Y Y Y Y Y Y C in guanidinium group
+cs C 12.01115000 3 N N N N N N sp2 aromatic carbon in 5 membered ring next to S
+ci C 12.01115000 3 N N N N N N sp2 aromatic carbon in charged imidazole ring (His+)
+ct C 12.01115000 2 N N N N N N sp carbon involved in a triple bond
+ct2 C 12.01115000 2 N N N N N N sp carbon in CO2
+na N 14.00670000 3 Y Y Y Y Y Y sp3 nitrogen in amines
+n3m N 14.00670000 3 N N N N N N sp3 nitrogen in 3- membered ring
+n4m N 14.00670000 3 N N N N N N sp3 nitrogen in 4- membered ring
+n3n N 14.00670000 3 N N N N N N sp2 nitrogen in 3- membered ring
+n4n N 14.00670000 3 N N N N N N sp2 nitrogen in 4- membered ring
+nb N 14.00670000 3 N N N N N N sp2 nitrogen in aromatic amines
+nn N 14.00670000 3 Y Y Y Y Y Y sp2 nitrogen in aromatic amines
+n N 14.00670000 3 Y Y Y Y Y Y generic sp2 nitrogen (in amids))
+np N 14.00670000 2 Y Y Y Y Y Y sp2 nitrogen in 5- or 6- membered ring
+npc N 14.00670000 3 N N N N N N sp2 nitrogen in 5- or 6- membered ring bonded to a heavy atom
+nh N 14.00670000 3 Y Y Y Y Y Y sp2 nitrogen in 5-or 6- membered ring with hydrogen attached
+nho N 14.00670000 3 N N N N N N sp2 nitrogen in 6- membered ring next to a carbonyl group and with a hydrogen
+nh+ N 14.00670000 3 N N N N N N protonated nitrogen in 6- membered ring with hydrogen attached
+n+ N 14.00670000 4 Y Y Y Y N Y sp3 nitrogen in protonated amines
+n4 N 14.00670000 4 N N N N N N sp3 nitrogen in protonated amines
+nr N 14.00670000 3 Y Y Y Y Y Y sp2 nitrogen (NH2) in guanidinium group (HN=C(NH2)2)
+n= N 14.00670000 2 Y Y Y Y Y Y non aromatic end doubly bonded nitrogen
+n=1 N 14.00670000 2 Y Y Y Y N Y non aromatic, next to end doubly bonded carbon
+n=2 N 14.00670000 2 Y Y Y Y N Y non aromatic doubly bonded nitrogen
+ni N 14.00670000 3 N N N N N N nitrogen in charged imidazole ring
+n1 N 14.00670000 3 N N N N N N sp2 nitrogen in charged arginine
+n2 N 14.00670000 3 N N N N N N sp2 nitrogen (NH2) in guanidinium group (HN=C(NH2)2)
+nt N 14.00670000 1 N N N N N N sp nitrogen involved in a triple bond
+nz N 14.00670000 1 N N N N N N sp nitrogen in N2
+o O 15.99940000 2 Y Y Y Y Y Y generic SP3 oxygen
+oh O 15.99940000 2 N N N N N N oxygen bonded to hydrogen
+oc O 15.99940000 2 N N N N N N sp3 oxygen in ether or acetals
+oe O 15.99940000 2 N N N N N N sp3 oxygen in ester
+o3e O 15.99940000 2 N N N N N N sp3 oxygen in three membered ring
+o4e O 15.99940000 2 N N N N N N sp3 oxygen in four membered ring
+o' O 15.99940000 1 Y Y Y Y Y Y oxygen in carbonyl group
+op O 15.99940000 2 Y Y Y Y Y Y sp2 aromatic in 5 membered ring
+o* O 15.99940000 2 Y Y Y N N Y oxygen in water
+o- O 15.99940000 1 Y Y Y Y Y Y partial double oxygen bonded to something then bonded to another
+h H 1.00797000 1 Y Y Y Y Y Y generic hydrogen bound to C, Si,or H
+h* H 1.00797000 1 Y Y Y Y Y Y hydrogen bonded to nitrogen, Oxygen
+h+ H 1.00797000 1 Y Y Y Y N Y charged hydrogen in cations
+hs H 1.00797000 1 N N N N N N hydrogen bonded to sulfur
+hc H 1.00797000 1 N N N N N N hydrogen bonded to carbon
+hp H 1.00797000 1 N N N N N N hydrogen bonded to phosphorus
+ho H 1.00797000 1 N N N N N N hydrogen bonded to oxygen
+hn H 1.00797000 1 N N N N N N hydrogen bonded to nitrogen
+hi H 1.00797000 1 N Y N N N Y Hydrogen in charged imidazole ring
+hw H 1.00797000 1 N N N N N N hydrogen in water
+dw D 2.01400000 1 N N N N N N deuterium in heivy water
+s S 32.06400000 2 Y Y Y Y N Y sp3 sulfur
+sc S 32.06400000 2 N N N N N N sp3 sulfur in methionines (C-S-C) group
+s3e S 32.06400000 2 N Y N N N N sulfur in three membered ring
+s4e S 32.06400000 2 N Y N N N N sulfur in four membered ring
+s1 S 32.06400000 2 N N N N N N sp3 sulfur involved in (S-S) group of disulfides
+sh S 32.06400000 2 N N N N N N sp3 sulfur in sulfhydryl (-SH) group (e.g. cysteine)
+sp S 32.06400000 2 Y Y Y Y Y Y sulfur in an aromatic ring (e.g. thiophene)
+s' S 32.06400000 1 N N N N N N S in thioketone group
+s- S 32.06400000 1 N N N N N N partial double sulfur bonded to something then bonded to another
+p P 30.97380000 4 Y N N N N N general phosphorous atom
+si Si 28.08600000 4 Y Y Y N N N silicon atom
+ca+ Ca 40.08000000 1 Y N N N N N calcium ion
+f F 18.99840000 1 Y N N N N N fluorine atom
+cl Cl 35.45300000 1 Y N N N N N chlorine atom
+Cl Cl 35.45300000 1 Y N N N N N chlorine ion
+br Br 79.90900000 1 Y N N N N N bromine atom
+Br Br 79.90900000 1 Y N N N N N bromine ion
+i I 126.90440000 1 Y N N N N N iodine atom
+Na Na 22.98980000 1 Y N N N N N sodium ion
+lp L 1.00000000 1 N N N N N N lone pair
+ar Ar 39.94800000 0 N N N N N N Argon atom
+pz ? 0.00000000 - N N N N N N
+sz ? 0.00000000 - N N N N N N
+nu ? 0.00000000 - N N N N N N
+d ? 0.00000000 - N N N N N N
+cn ? 0.00000000 - N N N N N N
+
+# general_assumed_equivs.coeffs: active Bond Coeff mappings
+# Elements -> assumed FF key : availability in this .frc
+C-C -> c_-c_ : AVAILABLE
+H-H -> h_-h_ : AVAILABLE
+O-O -> o_-o_ : AVAILABLE
+N-N -> n_-n_ : AVAILABLE
+S-S -> s_-s_ : AVAILABLE
+C-H -> c_-h_ : AVAILABLE
+C-O -> c-o : AVAILABLE
+C-N -> c_-n_ : AVAILABLE
+C-S -> c_-s_ : AVAILABLE
+T-T -> t-t : UNAVAILABLE
+C-C -> C-c_ : UNAVAILABLE
+O-O -> O-* : UNAVAILABLE
+N-N -> N-* : UNAVAILABLE
+S-S -> S-* : UNAVAILABLE
+C-O -> C-* : UNAVAILABLE
+C-O -> H-*7 : UNAVAILABLE
+C-C -> O-c_ : UNAVAILABLE
+T-T -> T-t : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-O -> C-C : UNAVAILABLE
+C-C -> O-H : UNAVAILABLE
+O-C -> O-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-C -> H-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+
+# Parameter sections parsed
+angle-angle angle-angle-torsion_1 angle-torsion_3 bond-angle bond-bond bond-bond_1_3 end_bond-torsion_3 middle_bond-torsion_3 nonbond(9-6) quadratic_angle quadratic_bond quartic_angle quartic_bond torsion_1 torsion_3 wilson_out_of_plane

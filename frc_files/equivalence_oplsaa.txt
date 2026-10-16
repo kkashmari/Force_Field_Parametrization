@@ -1,0 +1,78 @@
+# Equivalence reference: oplsaa.frc
+# Detected LAMMPS family: class1
+# Generated from the force field itself; matching is case-sensitive.
+# A self mapping means the file supplies no broader standard equivalence.
+
+# Standard equivalence table
+# Type NonB Bond [BondInct] Angle Torsion OOP
+HC HC HC HC HC HC
+HO HO HO HO HO HO
+HS HS HS HS HS HS
+HM HM HM HM HM HM
+CT CT CT CT CT CT
+OH OH OH OH OH OH
+SH SH SH SH SH SH
+S S S S S S
+CG CG CG CG CG CG
+CL CL CL CL CL CL
+CC CC CC CC CC CC
+OC OC OC OC OC OC
+h h h h h h
+
+# Automatic equivalence table
+# Type NonB BondInct Bond AngleEnd AngleApex TorsionEnd TorsionCenter OOPEnd OOPCenter
+# None supplied
+
+# Atom metadata and explicit parameter participation
+# Type Element Mass Connections NonB Bond Angle Torsion OOP Cross Description
+HC H 1.00797000 1 Y Y Y Y N N H, RH, alkanes
+HO H 1.00797000 1 Y Y Y Y N N H(O), ROH
+HS H 1.00797000 1 Y Y Y Y N N H(S), RSH
+HM H 1.00797000 1 Y N N N N N H(C), CH3OH
+CT C 12.01115000 4 Y Y Y Y N N Aliphatic C
+OH O 15.99940000 2 Y Y Y Y N N O, ROH
+SH S 32.06400000 2 Y Y Y Y N N S, RSH
+S S 32.06400000 2 Y Y Y Y N N S, RSR
+CG C 12.01115000 1 Y N N N N N Graphite C
+CL Cl 35.45300000 1 Y Y Y Y N N Cl, RCl
+CC C 12.01115000 3 Y Y Y N Y N Carbonate ion C, AMBER
+OC O 15.03506000 1 Y Y Y N Y N Carbonate ion O, AMBER
+h ? 0.00000000 - N N N N N N
+
+# general_assumed_equivs.coeffs: active Bond Coeff mappings
+# Elements -> assumed FF key : availability in this .frc
+C-C -> c_-c_ : UNAVAILABLE
+H-H -> h_-h_ : UNAVAILABLE
+O-O -> o_-o_ : UNAVAILABLE
+N-N -> n_-n_ : UNAVAILABLE
+S-S -> s_-s_ : UNAVAILABLE
+C-H -> c_-h_ : UNAVAILABLE
+C-O -> c-o : UNAVAILABLE
+C-N -> c_-n_ : UNAVAILABLE
+C-S -> c_-s_ : UNAVAILABLE
+T-T -> t-t : UNAVAILABLE
+C-C -> C-c_ : UNAVAILABLE
+O-O -> O-* : UNAVAILABLE
+N-N -> N-* : UNAVAILABLE
+S-S -> S-* : UNAVAILABLE
+C-O -> C-* : UNAVAILABLE
+C-O -> H-*7 : UNAVAILABLE
+C-C -> O-c_ : UNAVAILABLE
+T-T -> T-t : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-O -> C-C : UNAVAILABLE
+C-C -> O-H : UNAVAILABLE
+O-C -> O-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-C -> H-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+
+# Parameter sections parsed
+angle-angle angle-angle-torsion_1 bond-angle bond-bond nonbond(12-6) out_of_plane quadratic_angle quadratic_bond torsion_1

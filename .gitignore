@@ -1,0 +1,26 @@
+# macOS and editor metadata
+.DS_Store
+.idea/
+.vscode/
+*~
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Runtime logs and large trajectory output
+*.log
+*.log.lammps
+*.lammpstrj
+
+# Generated parameterization examples
+/amor_model_UFF_generated/
+/POSCAR_UFF_PE/
+/generate_uff_lammps/amor_model_UFF_generated/
+/generate_uff_lammps/*_densityprofile_*.png
+/generate_uff_lammps/*_densityprofile_*.pdf

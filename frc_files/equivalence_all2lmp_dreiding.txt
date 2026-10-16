@@ -1,0 +1,182 @@
+# Equivalence reference: all2lmp_dreiding.frc
+# Detected LAMMPS family: class1
+# Generated from the force field itself; matching is case-sensitive.
+# A self mapping means the file supplies no broader standard equivalence.
+
+# Standard equivalence table
+# Type NonB Bond [BondInct] Angle Torsion OOP
+H_ H_ H_ H_ Sp0 NonPlanar
+H___HB H___HB H___HB H___HB Sp0 NonPlanar
+H___b H___b H___b H___b Sp0 NonPlanar
+B_3 B_3 B_3 B_3 Sp3 NonPlanar
+B_2 B_2 B_2 B_2 Sp2 Planar
+B_2Mid B_2 B_2 B_2 Sp2Mid Planar
+C_34 C_3 C_3 C_3 Sp3 NonPlanar
+C_33 C_3 C_3 C_3 Sp3 NonPlanar
+C_32 C_3 C_3 C_3 Sp3 NonPlanar
+C_31 C_3 C_3 C_3 Sp3 NonPlanar
+C_3 C_3 C_3 C_3 Sp3 NonPlanar
+C_R2 C_R C_R C_R SpR Planar
+C_R1 C_R C_R C_R SpR Planar
+C_R C_R C_R C_R SpR Planar
+C_RB C_R C_R C_R SpRB Planar
+C_22 C_2 C_2 C_2 Sp2 Planar
+C_21 C_2 C_2 C_2 Sp2 Planar
+C_2 C_2 C_2 C_2 Sp2 Planar
+C_22Mid C_2 C_2 C_2 Sp2Mid Planar
+C_21Mid C_2 C_2 C_2 Sp2Mid Planar
+C_2Mid C_2 C_2 C_2 Sp2Mid Planar
+C_11 C_1 C_1 C_1 Sp1 NonPlanar
+C_1 C_1 C_1 C_1 Sp1 NonPlanar
+N_33 N_3 N_3 N_3 Sp3 NonPlanar
+N_32 N_3 N_3 N_3 Sp3 NonPlanar
+N_31 N_3 N_3 N_3 Sp3 NonPlanar
+N_3 N_3 N_3 N_3 Sp3 NonPlanar
+N_R2 N_R N_R N_R SpR Planar
+N_R1 N_R N_R N_R SpR Planar
+N_R N_R N_R N_R SpR Planar
+N_22 N_2 N_2 N_2 Sp2 Planar
+N_21 N_2 N_2 N_2 Sp2 Planar
+N_2 N_2 N_2 N_2 Sp2 Planar
+N_22Mid N_2 N_2 N_2 Sp2Mid Planar
+N_21Mid N_2 N_2 N_2 Sp2Mid Planar
+N_2Mid N_2 N_2 N_2 Sp2Mid Planar
+N_1 N_1 N_1 N_1 Sp1 NonPlanar
+O_32 O_3 O_3 O_3 OSp3 NonPlanar
+O_31 O_3 O_3 O_3 OSp3 NonPlanar
+O_3 O_3 O_3 O_3 OSp3 NonPlanar
+O_2 O_2 O_2 O_2 OSp2 Planar
+O_R1 O_R O_R O_R OSpR Planar
+O_R O_R O_R O_R OSpR Planar
+O_1 O_1 O_1 O_1 OSp1 NonPlanar
+F_ F_ F_ F_ Sp0 NonPlanar
+Al3 Al3 Al3 Al3 Sp3 NonPlanar
+Si3 Si3 Si3 Si3 Sp3 NonPlanar
+P_3 P_3 P_3 P_3 Sp3 NonPlanar
+S_3 S_3 S_3 S_3 Sp3 NonPlanar
+Cl Cl Cl Cl Sp0 NonPlanar
+Ga3 Ga3 Ga3 Ga3 Sp3 NonPlanar
+Ge3 Ge3 Ge3 Ge3 Sp3 NonPlanar
+As3 As3 As3 As3 Sp3 NonPlanar
+Se3 Se3 Se3 Se3 Sp3 NonPlanar
+Br Br Br Br Sp0 NonPlanar
+In3 In3 In3 In3 Sp3 NonPlanar
+Sn3 Sn3 Sn3 Sn3 Sp3 NonPlanar
+Sb3 Sb3 Sb3 Sb3 Sp3 NonPlanar
+Te3 Te3 Te3 Te3 Sp3 NonPlanar
+I_ I_ I_ I_ Sp0 NonPlanar
+Na Na Na Na Sp0 NonPlanar
+Ca Ca Ca Ca Sp0 NonPlanar
+Fe Fe Fe Fe Sp0 NonPlanar
+Zn Zn Zn Zn Sp0 NonPlanar
+X X X X X X
+
+# Automatic equivalence table
+# Type NonB BondInct Bond AngleEnd AngleApex TorsionEnd TorsionCenter OOPEnd OOPCenter
+# None supplied
+
+# Atom metadata and explicit parameter participation
+# Type Element Mass Connections NonB Bond Angle Torsion OOP Cross Description
+H_ H 1.00800000 1 Y Y Y N N N Generic hydrogen
+H___HB H 1.00800000 1 Y Y Y N N N Hydrogen cabable of forming hydrogen bonds
+H___b H 1.00800000 1 Y Y Y N N N Bridging hydrogen of diborane
+B_3 B 10.81000000 3 Y Y Y N N N Sp3 hybridized Boron
+B_2 B 10.81000000 2 Y Y Y N N N Sp2 hybridized Boron
+B_2Mid B 10.81000000 2 N N N N N N Sp2 hybridized Boron in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+C_34 C 16.04300000 0 N N N N N N Sp3 hybridized Carbon with 4-implicit hydrogens
+C_33 C 15.03500000 1 N N N N N N Sp3 hybridized Carbon with 3-implicit hydrogens
+C_32 C 14.02700000 2 N N N N N N Sp3 hybridized Carbon with 2-implicit hydrogens
+C_31 C 13.01900000 3 N N N N N N Sp3 hybridized Carbon with 1-implicit hydrogens
+C_3 C 12.01100000 4 Y Y Y N N N Sp3 hybridized Carbon with 0-implicit hydrogens
+C_R2 C 14.02700000 1 N N N N N N Sp2 aromatic Carbon with 2-implicit hydrogens
+C_R1 C 13.01900000 2 N N N N N N Sp2 aromatic Carbon with 1-implicit hydrogens
+C_R C 12.01100000 3 Y Y Y N N N Sp2 aromatic Carbon with 0-implicit hydrogens
+C_RB C 12.01100000 3 N N N N N N Sp2 aromatic Carbon with 0-implicit hydrogens "B"ridging bond between two aromatic rings like in propene (will assign torsions differently)
+C_22 C 14.02700000 1 N N N N N N Sp2 non-aromatic Carbon with 2-implicit hydrogens
+C_21 C 13.01900000 2 N N N N N N Sp2 non-aromatic Carbon with 1-implicit hydrogens
+C_2 C 12.01100000 3 Y Y Y N N N Sp2 non-aromatic Carbon with 0-implicit hydrogens
+C_22Mid C 14.02700000 1 N N N N N N Sp2 non-aromatic Carbon with 2-implicit hydrogens in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+C_21Mid C 13.01900000 2 N N N N N N Sp2 non-aromatic Carbon with 1-implicit hydrogens in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+C_2Mid C 12.01100000 3 N N N N N N Sp2 non-aromatic Carbon with 0-implicit hydrogens in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+C_11 C 13.01900000 1 N N N N N N Sp1 hybridized Carbon with 1-implicit hydrogens
+C_1 C 12.01100000 2 Y Y Y N N N Sp1 hybridized Carbon with 0-implicit hydrogens
+N_33 N 17.03100000 1 N N N N N N Sp3 hybridized Nitrogen with 3-implicit hydrogens
+N_32 N 16.02300000 2 N N N N N N Sp3 hybridized Nitrogen with 2-implicit hydrogens
+N_31 N 15.01500000 3 N N N N N N Sp3 hybridized Nitrogen with 1-implicit hydrogens
+N_3 N 14.00700000 4 Y Y Y N N N Sp3 hybridized Nitrogen with 0-implicit hydrogens
+N_R2 N 16.02300000 1 N N N N N N Sp2 aromatic Nitrogen with 2-implicit hydrogens
+N_R1 N 15.01500000 2 N N N N N N Sp2 aromatic Nitrogen with 1-implicit hydrogens
+N_R N 14.00700000 2 Y Y Y N N N Sp2 aromatic Nitrogen with 0-implicit hydrogens
+N_22 N 16.02300000 1 N N N N N N Sp2 non-aromatic Nitrogen with 2-implicit hydrogens
+N_21 N 15.01500000 2 N N N N N N Sp2 non-aromatic Nitrogen with 1-implicit hydrogens
+N_2 N 14.00700000 3 Y Y Y N N N Sp2 non-aromatic Nitrogen with 0-implicit hydrogens
+N_22Mid N 16.02300000 1 N N N N N N Sp2 non-aromatic Nitrogen with 2-implicit hydrogens in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+N_21Mid N 15.01500000 2 N N N N N N Sp2 non-aromatic Nitrogen with 1-implicit hydrogens in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+N_2Mid N 14.00700000 3 N N N N N N Sp2 non-aromatic Nitrogen with 0-implicit hydrogens in the "middle" of a molecule bonded to an Sp3 atom (uniquely named by Josh to help all2lmp set correct torsions)
+N_1 N 14.00700000 2 Y Y Y N N N Sp1 hybridized Nitrogen with 0-implicit hydrogens
+O_32 O 18.01500000 0 N N N N N N Sp3 hybridized Oxygen with 2-implicit hydrogens
+O_31 O 17.00700000 1 N N N N N N Sp3 hybridized Oxygen with 1-implicit hydrogens
+O_3 O 15.99900000 2 Y Y Y N N N Sp3 hybridized Oxygen with 0-implicit hydrogens
+O_2 O 15.99900000 2 Y Y Y N N N Sp2 non-aromatic Oxygen with 0-implicit hydrogens
+O_R1 O 17.00700000 1 N N N N N N Sp2 aromatic Oxygen with 1-implicit hydrogens
+O_R O 15.99900000 2 Y Y Y N N N Sp2 aromatic Oxygen with 0-implicit hydrogens
+O_1 O 15.99900000 1 Y Y Y N N N Sp1 hybridized Oxygen with 0-implicit hydrogens
+F_ F 18.99840000 1 Y Y Y N N N Fluorine
+Al3 Al 26.98150000 4 Y Y Y N N N Sp3 Aluminium, e.g. in trialkylaluminium compounds
+Si3 Si 28.08500000 4 Y Y Y N N N Sp3 Silicon, e.g. in silanes
+P_3 P 30.97370000 3 Y Y Y N N N Sp3 Phosphorous, e.g. in phosphanes
+S_3 S 32.06000000 2 Y Y Y N N N Sulfur, e.g. in thiols, thioethers
+Cl Cl 35.45000000 1 Y Y Y N N N Chlorine
+Ga3 Ga 69.72300000 4 Y Y Y N N N Sp3 Gallium
+Ge3 Ge 72.63000000 4 Y Y Y N N N Sp3 Germanium
+As3 As 74.92100000 4 Y Y Y N N N Sp3 Arsenic
+Se3 Se 78.97100000 4 Y Y Y N N N Sp3 Selenium
+Br Br 79.90400000 1 Y Y Y N N N Bromine
+In3 In 114.81800000 4 Y Y Y N N N Sp3 Indium
+Sn3 Sn 118.71000000 4 Y Y Y N N N Sp3 Tin
+Sb3 Sb 121.76000000 4 Y Y Y N N N Sp3 Antimony
+Te3 Te 121.60000000 4 Y Y Y N N N Sp3 Tellurium
+I_ I 126.90447000 1 Y Y Y N N N Iodine
+Na Na 22.98970000 4 Y Y Y N N N Sodium(+) ion
+Ca Ca 40.07800000 1 Y Y Y N N N Calcium(++) ion
+Fe Fe 55.84500000 1 Y Y Y N N N Iron(++) ion
+Zn Zn 65.38000000 1 Y Y Y N N N Zinc(++) ion
+X ? 0.00000000 - N N N N N N
+
+# general_assumed_equivs.coeffs: active Bond Coeff mappings
+# Elements -> assumed FF key : availability in this .frc
+C-C -> c_-c_ : UNAVAILABLE
+H-H -> h_-h_ : UNAVAILABLE
+O-O -> o_-o_ : UNAVAILABLE
+N-N -> n_-n_ : UNAVAILABLE
+S-S -> s_-s_ : UNAVAILABLE
+C-H -> c_-h_ : UNAVAILABLE
+C-O -> c-o : UNAVAILABLE
+C-N -> c_-n_ : UNAVAILABLE
+C-S -> c_-s_ : UNAVAILABLE
+T-T -> t-t : UNAVAILABLE
+C-C -> C-c_ : UNAVAILABLE
+O-O -> O-* : UNAVAILABLE
+N-N -> N-* : UNAVAILABLE
+S-S -> S-* : UNAVAILABLE
+C-O -> C-* : UNAVAILABLE
+C-O -> H-*7 : UNAVAILABLE
+C-C -> O-c_ : UNAVAILABLE
+T-T -> T-t : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-O -> C-C : UNAVAILABLE
+C-C -> O-H : UNAVAILABLE
+O-C -> O-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-C -> H-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+
+# Parameter sections parsed
+nonbond(12-6) out_of_plane quadratic_angle quadratic_bond torsion_1

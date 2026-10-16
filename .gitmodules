@@ -1,0 +1,3 @@
+[submodule "AMBER2LAMMPS"]
+	path = AMBER2LAMMPS
+	url = https://github.com/askforarun/AMBER2LAMMPS.git

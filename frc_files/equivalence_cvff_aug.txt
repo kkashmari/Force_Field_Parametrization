@@ -1,0 +1,551 @@
+# Equivalence reference: cvff_aug.frc
+# Detected LAMMPS family: class1
+# Generated from the force field itself; matching is case-sensitive.
+# A self mapping means the file supplies no broader standard equivalence.
+
+# Standard equivalence table
+# Type NonB Bond [BondInct] Angle Torsion OOP
+h h h h h h
+d h h h h h
+hn hn hn hn hn hn
+ho hn ho ho ho ho
+hp h h h h h
+hs h hs hs hs hs
+h* h* h* h* h* h*
+h$ h$ h$ h$ h$ h$
+lp h lp h h h
+h+ hn hn hn hn hn
+hc h h h h h
+hi hn hn hn hn hn
+hw h* h* h* h* h*
+dw h* h* h* h* h*
+c c c c c c
+cg cg c c c c
+c' c' c' c' c' c'
+c* c' c' c' c' c'
+c" c' c' c' c' c'
+cp c' cp cp cp cp
+cr c' cr c' cr c'
+c+ c' cr c' cr c'
+c- c' c' c' c' c'
+ca cg c c c c
+c3 cg c c c c
+cn cg c c c c
+c2 cg c c c c
+c1 cg c c c c
+c5 c' c5 c5 cp cp
+cs c' cs cs cs cs
+c= c' c= c= c= c=
+c=1 c' c=1 c= c=1 c=
+c=2 c' c=2 c= c=2 c=
+ct c' ct ct ct ct
+ci c' ci c5 cp cp
+c$ c$ c$ c$ c$ c$
+co c c c c c
+c3m c c c c c
+c4m c c c c c
+coh cg c c c c
+c3h cg c c c c
+c4h cg c c c c
+n n n n n n
+no n no no no no
+n2 n n2 n n2 n2
+np n np np np np
+n3 n n3 n3 n3 n3
+n4 n n4 n3 n3 n3
+n= n n= np np np
+n=1 n n=1 np np np
+n=2 n n=2 np np np
+nt n nt nt nt nt
+nz n nz nz nz nz
+n1 n n1 n n n
+ni n ni np np np
+n$ n$ n$ n$ n$ n$
+na n n3 n3 n3 n3
+n3m n n3 n3 n3 n3
+n4m n n3 n3 n3 n3
+n3n n n n n n
+n4n n n n n n
+nb n n3 n3 n3 n3
+nn n n3 n3 n3 n3
+npc n np np np np
+nh n np np np np
+nho n np np np np
+nh+ n nh+ np np np
+n+ n n4 n3 n3 n3
+nr n n2 n2 n2 n2
+o' o' o' o' o' o'
+o o' o o o o'
+o- o' o- o- o' o'
+oh o' oh o o o'
+o* o* o* o* o* o*
+op o' op op op op
+of o' oh o of o'
+o$ o$ o$ o$ o$ o$
+oc o' o o o o'
+oe o' o o o o'
+o3e o' o o o o'
+o4e o' o o o o'
+s s s s s s
+s1 s s s s s
+sh s sh sh sh sh
+sp s' sp sp sp sp
+s' s' s' s' s' s'
+s$ s$ s$ s$ s$ s$
+sc s s s s s
+s3e s s s s s
+s4e s s s s s
+s- s- s- s- s- s-
+p p p p p p
+p$ p$ p$ p$ p$ p$
+ca+ ca+ ca+ ca+ ca+ ca+
+f f f f f f
+cl cl cl cl cl cl
+br br br br br br
+i i i i i i
+si si si si si si
+nu nu nu nu nu nu
+Cl Cl Cl Cl Cl Cl
+Br Br Br Br Br Br
+Na Na Na Na Na Na
+ar ar ar ar ar ar
+sz sz sz sz sz sz
+sy sy sy sy sy sy
+oz oz oz oz oz oz
+oy oy oy oy oy oy
+az az az az az az
+ay ay ay ay ay ay
+ayt ayt ayt ayt ayt ayt
+pz pz pz pz pz pz
+py py py py py py
+ga ga ga ga ga ga
+ge ge ge ge ge ge
+tioc tioc tioc tioc tioc tioc
+ti4c ti4c ti4c ti4c ti4c ti4c
+titd titd titd titd titd titd
+li+ li+ li+ li+ li+ li+
+lic+ lic+ lic+ lic+ lic+ lic+
+lioh lioh lioh lioh lioh lioh
+na+ na+ na+ na+ na+ na+
+nac+ nac+ nac+ nac+ nac+ nac+
+naoh naoh naoh naoh naoh naoh
+k+ k+ k+ k+ k+ k+
+koh koh koh koh koh koh
+rb+ rb+ rb+ rb+ rb+ rb+
+cs+ cs+ cs+ cs+ cs+ cs+
+nh4+ nh4+ nh4+ nh4+ nh4+ nh4+
+mg2+ mg2+ mg2+ mg2+ mg2+ mg2+
+mg2c mg2c mg2c mg2c mg2c mg2c
+mn4c mn4c mn4c mn4c mn4c mn4c
+mn3c mn3c mn3c mn3c mn3c mn3c
+co2c co2c co2c co2c co2c co2c
+ni2c ni2c ni2c ni2c ni2c ni2c
+ca2+ ca2+ ca2+ ca2+ ca2+ ca2+
+ca2c ca2c ca2c ca2c ca2c ca2c
+sr2c sr2c sr2c sr2c sr2c sr2c
+ba2+ ba2+ ba2+ ba2+ ba2+ ba2+
+cu2+ cu2+ cu2+ cu2+ cu2+ cu2+
+fe2c fe2c fe2c fe2c fe2c fe2c
+f- f- f- f- f- f-
+beoh beoh beoh beoh beoh beoh
+foh foh foh foh foh foh
+cl- cl- cl- cl- cl- cl-
+cloh cloh cloh cloh cloh cloh
+cly- cly- cly- cly- cly- cly-
+br- br- br- br- br- br-
+i- i- i- i- i- i-
+so4 so4 so4 so4 so4 so4
+so4y so4y so4y so4y so4y so4y
+hocl hocl hocl hocl hocl hocl
+pd2+ pd2+ pd2+ pd2+ pd2+ pd2+
+vy vy vy vy vy vy
+al si al si si si
+Pt Pt Br c c c
+Pd Pd Br c c c
+Au Au Br c c c
+Ag Ag Br c c c
+Sn Na Br c c c
+K Pb Br c c c
+Li Li Br c c c
+Mo Mo Br c c c
+Fe Fe Br c c c
+W W Br c c c
+Ni Ni Br c c c
+Cr Cr Br c c c
+Cu Cu Br c c c
+Pb Pb Br c c c
+
+# Automatic equivalence table
+# Type NonB BondInct Bond AngleEnd AngleApex TorsionEnd TorsionCenter OOPEnd OOPCenter
+h h h h_ h_ h_ h_ h_ h_ h_
+d h h h_ h_ h_ h_ h_ h_ h_
+hn hn hn h_ h_ h_ h_ h_ h_ h_
+ho hn ho h_ h_ h_ h_ h_ h_ h_
+hp h h h_ h_ h_ h_ h_ h_ h_
+hs h hs h_ h_ h_ h_ h_ h_ h_
+h* h* h* h_ h_ h_ h_ h_ h_ h_
+lp h lp h_ h_ h_ h_ h_ h_ h_
+h+ hn hn h_ h_ h_ h_ h_ h_ h_
+hc h h h_ h_ h_ h_ h_ h_ h_
+hi hn hn h_ h_ h_ h_ h_ h_ h_
+hw h* h* h_ h_ h_ h_ h_ h_ h_
+dw h* h* h_ h_ h_ h_ h_ h_ h_
+c c c c_ c_ c_ c_ c_ c_ c_
+cg cg c c_ c_ c_ c_ c_ c_ c_
+c' c' c' c'_ c_ c'_ c_ c'_ c_ c'_
+c* c' c' c'_ c_ c'_ c_ c'_ c_ c'_
+c" c' c' c'_ c_ c'_ c_ c'_ c_ c'_
+cp c' cp cp_ c_ cp_ c_ cp_ c_ cp_
+cr c' cr cr_ c_ c'_ c_ c=_3 c_ c'_
+c+ c' cr cr_ c_ c'_ c_ c+_ c_ c'_
+c- c' c' c'_ c_ c'_ c_ c'_ c_ c'_
+ca cg c c_ c_ c_ c_ c_ c_ c_
+c3 cg c c_ c_ c_ c_ c_ c_ c_
+cn cg c c_ c_ c_ c_ c_ c_ c_
+c2 cg c c_ c_ c_ c_ c_ c_ c_
+c1 cg c c_ c_ c_ c_ c_ c_ c_
+c5 c' c5 cp_ c_ cp_ c_ cp_ c_ cp_
+cs c' cs cp_ c_ cp_ c_ cp_ c_ cp_
+c= c' c= c=_3 c_ c=_ c_ c=_3 c_ c=_
+c=1 c' c= c=_1 c_ c=_ c_ c=_1 c_ c=_
+c=2 c' c= c=_2 c_ c=_ c_ c=_2 c_ c=_
+ct c' ct ct_ c_ ct_ c_ ct_ c_ ct_
+ci c' ci ci_ c_ cp_ c_ cp_ c_ cp_
+co c c c_ c_ c_ c_ c_ c_ c_
+c3m c c c3m_ c3m_ c3m_ c_ c_ c_ c_
+c4m c c c4m_ c4m_ c4m_ c_ c_ c_ c_
+coh cg c c_ c_ c_ c_ c_ c_ c_
+c3h cg c c3m_ c3m_ c3m_ c_ c_ c_ c_
+c4h cg c c4m_ c4m_ c4m_ c_ c_ c_ c_
+n n n n_ n_ n_ n_ n_ n_ n_
+no n n n_ n_ n_ n_ n_ n_ n_
+n2 n n2 n_ n_ n_ n_ n_ n_ n_
+np n np np_ n_ np_ n_ np_ n_ np_
+n3 n n3 na_ n_ na_ n_ na_ n_ na_
+n4 n n4 n+_ n_ na_ n_ na_ n_ na_
+n= n n= n=_3 n_ n_ n_ n=_3 n_ n=_
+n=1 n n= n=_1 n_ n_ n_ n=_1 n_ n=_
+n=2 n n= n=_2 n_ n_ n_ n=_2 n_ n=_
+nt n nt nt_ n_ nt_ n_ nt_ n_ nt_
+nz n nz nz_ n_ nz_ n_ nz_ n_ nz_
+n1 n n1 n_ n_ n_ n_ n_ n_ n_
+ni n ni ni_ n_ np_ n_ np_ n_ np_
+na n n3 na_ n_ na_ n_ na_ n_ na_
+n3m n n3 n3m_ n3m_ n3m_ n_ na_ n_ na_
+n4m n n3 n4m_ n4m_ n4m_ n_ na_ n_ na_
+n3n n n n3m_ n3m_ n3m_ n_ n3n_ n_ n_
+n4n n n n4m_ n4m_ n4m_ n_ n_ n_ n_
+nb n n3 np_ n_ n_ n_ n_ n_ n_
+nn n n3 na_ n_ n_ n_ n_ n_ n_
+npc n np np_ n_ np_ n_ np_ n_ np_
+nh n np np_ n_ np_ n_ np_ n_ np_
+nho n np np_ n_ np_ n_ np_ n_ np_
+nh+ n nh+ np_ n_ np_ n_ np_ n_ np_
+n+ n n4 n+_ n_ na_ n_ na_ n_ na_
+nr n n2 n_ n_ n_ n_ n_ n_ n_
+o' o' o' o'_ o'_ o_ o_ o_ o_ o_
+o o' o o_ o_ o_ o_ o_ o_ o_
+o- o' o- o-_ o'_ o_ o_ o_ o_ o_
+oh o' oh o_ o_ o_ o_ o_ o_ o_
+o* o* o* o_ o_ o*_ o_ o_ o_ o_
+op o' op op_ o_ op_ o_ o_ o_ op_
+of o' oh o_ o_ o_ o_ o_ o_ o_
+oc o' o o_ o_ o_ o_ o_ o_ o_
+oe o' o o_ o_ o_ o_ o_ o_ o_
+o3e o' o o3e_ o3e_ o3e_ o_ o_ o_ o_
+o4e o' o o4e_ o4e_ o4e_ o_ o_ o_ o_
+s s s s_ s_ s_ s_ s_ s_ s_
+s1 s s s_ s_ s_ s_ s_ s_ s_
+sh s sh s_ s_ s_ s_ s_ s_ s_
+sp s' sp sp_ s_ sp_ s_ sp_ s_ sp_
+s' s' s' s'_ s'_ s_ s_ s_ s_ s_
+sc s s s_ s_ s_ s_ s_ s_ s_
+s3e s s s3e_ s3e_ s3e_ s_ s_ s_ s_
+s4e s s s4e_ s4e_ s4e_ s_ s_ s_ s_
+s- s' s- s-_ s'_ s_ s_ s_ s_ s_
+p p p p_ p_ p_ p_ p_ p_ p_
+ca+ ca+ ca+ ca+_ ca+_ ca+_ ca+_ ca+_ ca+_ ca+_
+f f f f_ f_ f_ f_ f_ f_ f_
+cl cl cl cl_ f_ cl_ c_ cl_ cl_ cl_
+br br br br_ f_ br_ br_ br_ br_ br_
+i i i i_ f_ i_ i_ i_ i_ i_
+si si si si_ si_ si_ si_ si_ si_ si_
+nu nu nu nu_ nu_ nu_ nu_ nu_ nu_ nu_
+Cl Cl Cl Cl_ Cl_ Cl_ Cl_ Cl_ Cl_ Cl_
+Br Br Br Br_ Br_ Br_ Br_ Br_ Br_ Br_
+Na Na Na Na_ Na_ Na_ Na_ Na_ Na_ Na_
+ar ar ar ar_ ar_ ar_ ar_ ar_ ar_ ar_
+sz sz sz sz_ sz_ sz_ sz_ sz_ sz_ sz_
+sy sy sy sy_ sy_ sy_ sy_ sy_ sy_ sy_
+oz oz oz oz_ oz_ oz_ oz_ oz_ oz_ oz_
+oy oy oy oy_ oy_ oy_ oy_ oy_ oy_ oy_
+az az az az_ az_ az_ az_ az_ az_ az_
+ay ay ay ay_ ay_ ay_ ay_ ay_ ay_ ay_
+ayt ayt ayt ayt_ ayt_ ayt_ ayt_ ayt_ ayt_ ayt_
+pz pz pz pz_ pz_ pz_ pz_ pz_ pz_ pz_
+py py py py_ py_ py_ py_ py_ py_ py_
+ga ga ga ga_ ga_ ga_ ga_ ga_ ga_ ga_
+ge ge ge ge_ ge_ ge_ ge_ ge_ ge_ ge_
+tioc tioc tioc tioc_ tioc_ tioc_ tioc_ tioc_ tioc_ tioc_
+ti4c ti4c ti4c ti4c_ ti4c_ ti4c_ ti4c_ ti4c_ ti4c_ ti4c_
+titd titd titd titd_ titd_ titd_ titd_ titd_ titd_ titd_
+li+ li+ li+ li+_ li+_ li+_ li+_ li+_ li+_ li+_
+lic+ lic+ lic+ lic+_ lic+_ lic+_ lic+_ lic+_ lic+_ lic+_
+lioh lioh lioh lioh_ lioh_ lioh_ lioh_ lioh_ lioh_ lioh_
+na+ na+ na+ na+_ na+_ na+_ na+_ na+_ na+_ na+_
+nac+ nac+ nac+ nac+_ nac+_ nac+_ nac+_ nac+_ nac+_ nac+_
+naoh naoh naoh naoh_ naoh_ naoh_ naoh_ naoh_ naoh_ naoh_
+k+ k+ k+ k+_ k+_ k+_ k+_ k+_ k+_ k+_
+koh koh koh koh_ koh_ koh_ koh_ koh_ koh_ koh_
+rb+ rb+ rb+ rb+_ rb+_ rb+_ rb+_ rb+_ rb+_ rb+_
+cs+ cs+ cs+ cs+_ cs+_ cs+_ cs+_ cs+_ cs+_ cs+_
+nh4+ nh4+ nh4+ nh4+_ nh4+_ nh4+_ nh4+_ nh4+_ nh4+_ nh4+_
+mg2+ mg2+ mg2+ mg2+_ mg2+_ mg2+_ mg2+_ mg2+_ mg2+_ mg2+_
+mg2c mg2c mg2c mg2c_ mg2c_ mg2c_ mg2c_ mg2c_ mg2c_ mg2c_
+mn4c mn4c mn4c mn4c_ mn4c_ mn4c_ mn4c_ mn4c_ mn4c_ mn4c_
+mn3c mn3c mn3c mn3c_ mn3c_ mn3c_ mn3c_ mn3c_ mn3c_ mn3c_
+co2c co2c co2c co2c_ co2c_ co2c_ co2c_ co2c_ co2c_ co2c_
+ni2c ni2c ni2c ni2c_ ni2c_ ni2c_ ni2c_ ni2c_ ni2c_ ni2c_
+ca2+ ca2+ ca2+ ca2+_ ca2+_ ca2+_ ca2+_ ca2+_ ca2+_ ca2+_
+ca2c ca2c ca2c ca2c_ ca2c_ ca2c_ ca2c_ ca2c_ ca2c_ ca2c_
+sr2c sr2c sr2c sr2c_ sr2c_ sr2c_ sr2c_ sr2c_ sr2c_ sr2c_
+ba2+ ba2+ ba2+ ba2+_ ba2+_ ba2+_ ba2+_ ba2+_ ba2+_ ba2+_
+cu2+ cu2+ cu2+ cu2+_ cu2+_ cu2+_ cu2+_ cu2+_ cu2+_ cu2+_
+fe2c fe2c fe2c fe2c_ fe2c_ fe2c_ fe2c_ fe2c_ fe2c_ fe2c_
+f- f- f- f-_ f-_ f-_ f-_ f-_ f-_ f-_
+beoh beoh beoh beoh_ beoh_ beoh_ beoh_ beoh_ beoh_ beoh_
+foh foh foh foh_ foh_ foh_ foh_ foh_ foh_ foh_
+cl- cl- cl- cl-_ cl-_ cl-_ cl-_ cl-_ cl-_ cl-_
+cloh cloh cloh cloh_ cloh_ cloh_ cloh_ cloh_ cloh_ cloh_
+cly- cly- cly- cly-_ cly-_ cly-_ cly-_ cly-_ cly-_ cly-_
+br- br- br- br-_ br-_ br-_ br-_ br-_ br-_ br-_
+i- i- i- i-_ i-_ i-_ i-_ i-_ i-_ i-_
+so4 so4 so4 so4_ so4_ so4_ so4_ so4_ so4_ so4_
+so4y so4y so4y so4y_ so4y_ so4y_ so4y_ so4y_ so4y_ so4y_
+hocl hocl hocl hocl_ hocl_ hocl_ hocl_ hocl_ hocl_ hocl_
+pd2+ pd2+ pd2+ pd2+_ pd2+_ pd2+_ pd2+_ pd2+_ pd2+_ pd2+_
+vy vy vy vy_ vy_ vy_ vy_ vy_ vy_ vy_
+al si si al_ si_ si_ si_ si_ si_ si_
+Pt Pt Pt c_ c_ c_ c_ c_ c_ c_
+Pd Pd Pd c_ c_ c_ c_ c_ c_ c_
+Au Au Au c_ c_ c_ c_ c_ c_ c_
+Ag Ag Ag c_ c_ c_ c_ c_ c_ c_
+Sn Sn Sn c_ c_ c_ c_ c_ c_ c_
+Li Li Li c_ c_ c_ c_ c_ c_ c_
+Mo Mo Mo c_ c_ c_ c_ c_ c_ c_
+Fe Fe Fe c_ c_ c_ c_ c_ c_ c_
+W W W c_ c_ c_ c_ c_ c_ c_
+Ni Ni Ni c_ c_ c_ c_ c_ c_ c_
+Cr Cr Cr c_ c_ c_ c_ c_ c_ c_
+Cu Cu Cu c_ c_ c_ c_ c_ c_ c_
+Pb Pb Pb c_ c_ c_ c_ c_ c_ c_
+
+# Atom metadata and explicit parameter participation
+# Type Element Mass Connections NonB Bond Angle Torsion OOP Cross Description
+h H 1.00797000 1 Y Y Y Y Y Y Hydrogen bonded to C. Masses from CRC 1973/74 pages B-250.
+d H 2.01400000 1 N Y N N N N General Deuterium
+hn H 1.00797000 1 Y Y Y Y Y Y Hydrogen bonded to N
+ho H 1.00797000 1 N Y Y N N Y Hydrogen bonded to O
+hp H 1.00797000 1 N N N N N N Hydrogen bonded to P
+hs H 1.00797000 1 N Y Y N N Y Hydrogen bonded to S
+h* H 1.00797000 1 Y Y Y N N Y Hydrogen in water molecule
+h$ H 1.00797000 1 N N N N N N Hydrogen atom for automatic parameter assignment
+lp L 0.00109700 1 N Y N N N N Lone Pair
+h+ H 1.00797000 1 N N N N N N Charged hydrogen in cations
+hc H 1.00797000 1 N N N N N N Hydrogen bonded to carbon
+hi H 1.00797000 1 N N N N N N Hydrogen in charged imidazole ring
+hw H 1.00797000 1 N N N N N N Hydrogen in water
+dw D 2.01400000 1 N N N N N N Deuterium in heivy water
+c C 12.01115000 4 Y Y Y Y Y Y Sp3 aliphatic carbon
+cg C 12.01115000 4 Y N N N N N Sp3 alpha carbon in glycine
+c' C 12.01115000 3 Y Y Y Y Y Y Sp2 carbon in carbonyl (C=O) group
+c* C 12.01115000 3 N N N N N N Carbon in carbonyl group, non_amides
+c" C 12.01115000 3 N N N N N N Carbon in carbonyl group, non_amides
+cp C 12.01115000 3 N Y Y Y Y Y Sp2 aromatic carbon (partial double bonds)
+cr C 12.01115000 3 N Y N Y N Y Carbon in guanidinium group (HN=C(NH2)2)
+c+ C 12.01115000 3 N N N N N N C in guanidinium group
+c- C 12.01115000 3 N N N N N N Carbon in charged carboxylate (COO-) group
+ca C 12.01115000 4 N N N N N N General amino acid alpha carbon (sp3)
+c3 C 12.01115000 4 N N N N N N Sp3 carbon in methyl (CH3) group
+cn C 12.01115000 4 N N N N N N Sp3 Carbon bonded to N
+c2 C 12.01115000 4 N N N N N N Sp3 carbon bonded to 2 H's, 2 heavy atoms
+c1 C 12.01115000 4 N N N N N N Sp3 carbon bonded to 1 H, 3 Heavy atoms
+c5 C 12.01115000 3 N Y Y N N Y Sp2 aromatic carbon in five membered ring
+cs C 12.01115000 3 N Y Y Y Y Y Sp2 carbon involved in thiophene
+c= C 12.01115000 3 N Y Y Y Y Y Non aromatic end doubly bonded carbon
+c=1 C 12.01115000 3 N Y Y Y N Y Non aromatic, next to end doubly bonded carbon
+c=2 C 12.01115000 3 N Y Y Y N Y Non aromatic doubly bonded carbon
+ct C 12.01115000 2 N N N Y N Y Sp carbon involved in triple bond
+ci C 12.01115000 3 N Y N N N N Aromatic carbon in a charged imidazole ring (HIS+)
+c$ C 12.01115000 4 N N N N N N Carbon atom for automatic parameter assignment
+co C 12.01115000 4 N N N N N N Sp3 carbon in acetals
+c3m C 12.01115000 4 N N N N N N Sp3 carbon in 3-membered ring
+c4m C 12.01115000 4 N N N N N N Sp3 carbon in 4-membered ring
+coh C 12.01115000 4 N N N N N N Sp3 carbon in acetals with hydrogen
+c3h C 12.01115000 4 N N N N N N Sp3 carbon in 3-membered ring with hydrogens
+c4h C 12.01115000 4 N N N N N N Sp3 carbon in 4-membered ring with hydrogens
+n N 14.00670000 3 Y Y Y Y Y Y Sp2 nitrogen with 1 H, 2 heavy atoms (amide group)
+no N 14.00670000 3 N Y Y Y Y N Sp2 nitrogen in nitro group
+n2 N 14.00670000 3 N Y N Y Y Y Sp2 nitrogen (NH2 in the guanidinium group (HN=C(NH2)2))
+np N 14.00670000 2 N Y Y Y Y Y Sp2 aromatic nitrogen (partial double bonds)
+n3 N 14.00670000 3 N Y Y Y N Y Sp3 nitrogen with three substituents
+n4 N 14.00670000 4 N Y N N N N Sp3 nitrogen with four substituents
+n= N 14.00670000 2 N Y N N N N Non aromatic end double bonded nitrogen
+n=1 N 14.00670000 2 N Y N N N N Non aromatic, next to end doubly bonded carbon
+n=2 N 14.00670000 2 N Y N N N N Non aromatic doubly bonded nitrogen
+nt N 14.00670000 1 N Y Y Y N Y Sp nitrogen involved in triple bond
+nz N 14.00670000 1 N Y N N N N Sp nitrogen in N2
+n1 N 14.00670000 3 N Y N N N N Sp2 nitrogen in charged arginine
+ni N 14.00670000 3 N Y N N N N Sp2 nitrogen in a charged imidazole ring (HIS+)
+n$ N 14.00670000 3 N N N N N N Nitrogen atom for automatic parameter assignment
+na N 14.00670000 3 N N N N N N Sp3 nitrogen in amines
+n3m N 14.00670000 3 N N N N N N Sp3 nitrogen in 3- membered ring
+n4m N 14.00670000 3 N N N N N N Sp3 nitrogen in 4- membered ring
+n3n N 14.00670000 3 N N N N N N Sp2 nitrogen in 3- membered ring
+n4n N 14.00670000 3 N N N N N N Sp2 nitrogen in 4- membered ring
+nb N 14.00670000 3 N N N N N N sp2 nitrogen in aromatic amines
+nn N 14.00670000 3 N N N N N N sp2 nitrogen in aromatic amines
+npc N 14.00670000 3 N N N N N N sp2 nitrogen in 5- or 6- membered ring bonded to a heavy atom
+nh N 14.00670000 3 N N N N N N sp2 nitrogen in 5-or 6- membered ring with hydrogen attached
+nho N 14.00670000 3 N N N N N N sp2 nitrogen in 6- membered ring next to a carbonyl group and with a hydrogen
+nh+ N 14.00670000 3 N N N N N N protonated nitrogen in 6- membered ring with hydrogen attached
+n+ N 14.00670000 4 N N N N N N sp3 nitrogen in protonated amines
+nr N 14.00670000 3 N N N N N N sp2 nitrogen (NH2) in guanidinium group (HN=C(NH2)2)
+o' O 15.99940000 1 Y Y Y Y Y Y Oxygen in carbonyl (C=O) group
+o O 15.99940000 2 N Y Y Y N Y sp3 oxygen in ether or ester groups
+o- O 15.99940000 1 N Y Y N N Y Oxygen in charged carboxylate (COO-) group
+oh O 15.99940000 2 N Y N N N N Oxygen in hydroxyl (OH) group
+o* O 15.99940000 2 Y Y Y Y N Y Oxygen in water molecule
+op O 15.99940000 2 N Y Y N N N Oxygen in aromatic rings. e.g. furan
+of O 15.99940000 2 N N N Y N Y Oxygen in
+o$ O 15.99940000 2 N N N N N N Oxygen atom for automatic parameter assignment
+oc O 15.99940000 2 N N N N N N sp3 oxygen in ether or acetals
+oe O 15.99940000 2 N N N N N N sp3 oxygen in ester
+o3e O 15.99940000 2 N N N N N N sp3 oxygen in three membered ring
+o4e O 15.99940000 2 N N N N N N sp3 oxygen in four membered ring
+s S 32.06400000 2 Y Y Y Y N Y Sulfur in methionine (C-S-C) group
+s1 S 32.06400000 2 N Y N N N N Sulfur involved in S-S disulfide bond
+sh S 32.06400000 2 N Y Y Y N Y Sulfur in sulfhydryl (-SH) group
+sp S 32.06400000 2 N Y Y Y Y Y Sulfur in thiophene
+s' S 32.06400000 2 Y Y Y N Y N Sulfur in thioketone (>C=S) group
+s$ S 32.06400000 2 N N N N N N Sulfur atom for automatic parameter assignment
+sc S 32.06400000 2 N N N N N N sp3 sulfur in methionines (C-S-C) group
+s3e S 32.06400000 2 N Y N N N N Sulfur in three membered ring
+s4e S 32.06400000 2 N Y N N N N Sulfur in four membered ring
+s- S 32.06400000 1 N N N N N N Sulfur bonded to something then bonded to another partial double O or S
+p P 30.97380000 4 Y Y Y Y N Y General phosphorous atom
+p$ P 30.97380000 4 N N N N N N Phosphorous atom for automatic parameter assignment
+ca+ Ca 40.07980000 0 Y N N N N N Calcium ion - Ca++, mass = mass of Ca - 2*electron mass.
+f F 18.99840000 1 Y Y Y N N Y Fluorine bonded to a carbon
+cl Cl 35.45300000 1 Y Y Y N N Y Chlorine bonded to a carbon
+br Br 79.90900000 1 Y Y Y N N Y Bromine bonded to a carbon
+i I 126.90450000 1 N Y N N N N Covalently bound Iodine
+si Si 28.08600000 4 Y Y Y Y N Y Silicon atom (General)
+nu H 12.00000000 0 Y N N N N N NULL atom for relative free energy
+Cl Cl 35.45300000 1 Y N N N N N Chloride ion Cl-
+Br Br 79.90400000 1 Y N N N N N Bromide ion Br-
+Na Na 22.98980000 1 Y N N N N N Sodium ion
+ar Ar 39.94800000 0 Y N N N N N Argon
+sz Si 28.08600000 1 Y Y Y Y N N Silicon atom in zeolites
+sy Si 28.08600000 1 Y Y Y Y N N Tetrahedral Silicon atom in Clays
+oz O 15.99940000 1 Y Y Y Y N N Oxygen atom in zeolites
+oy O 15.99940000 1 Y Y Y Y N N Oxygen atom in Clays
+az Al 26.98153900 1 Y Y Y Y N N Tetrahedral Aluminum atom in zeolites
+ay Al 26.98153900 1 Y Y Y Y N N Octahedral Aluminum atom in Clays
+ayt Al 26.98153900 1 Y Y Y Y N N Tetrahedral Aluminum atom to be used with oy
+pz P 30.97380000 1 Y Y Y Y N N Phosphorous atom in zeolites
+py P 30.97380000 1 Y Y Y Y N N Phosphorous atom to be used with oy
+ga Ga 69.72300000 1 Y Y Y Y N N Gallium atom in zeolites
+ge Ge 72.61000000 1 Y Y Y Y N N Germanium atom in zeolites
+tioc Ti 47.88000000 1 Y Y Y Y N N Titanium (Octahedral) in zeolites
+ti4c Ti 47.88000000 1 Y Y Y Y N N Titanium (Octahedral) to be used with oy
+titd Ti 47.88000000 1 Y Y Y Y N N Titanium (Tetrahedral) in zeolites
+li+ Li 6.94100000 1 Y Y Y Y N N Lithium ion in zeolites
+lic+ Li 6.94100000 1 Y Y Y Y N N Lithium ion to be used with oy in Clays
+lioh Li 6.94100000 1 Y Y Y Y N N Lithium ion in water to be used with o*
+na+ Na 22.98980000 1 Y Y Y Y N N Sodium ion in zeolites
+nac+ Na 22.98980000 1 Y Y Y Y N N Sodium ion in Clays
+naoh Na 22.98980000 1 Y Y Y Y N N Sodium ion in water to be used with o*
+k+ K 39.09830000 1 Y Y Y Y N N Potassium ion in zeolites
+koh K 39.09830000 1 Y Y Y Y N N Potassium ion in water to be used with o*
+rb+ Rb 85.46780000 1 Y Y Y Y N N Rubidium ion in zeolites
+cs+ Cs 132.90543000 1 Y Y Y Y N N Cesium ion in zeolites
+nh4+ N 14.00674000 1 Y Y Y Y N N United atom type for ammonium ion to be used with oy
+mg2+ Mg 24.30500000 1 Y Y Y Y N N Magnesium ion in zeolites
+mg2c Mg 24.30500000 1 Y Y Y Y N N Octahedral Magnesium ion in Clays
+mn4c Mn 54.93805000 1 Y Y Y Y N N Manganese (IV) ion to be used with oy in Clays
+mn3c Mn 54.93805000 1 Y Y Y Y N N Manganese (III) ion to be used with oy in Clays
+co2c Co 58.93320000 1 Y Y Y Y N N Cobalt (II) ion to be used with oy in Clays
+ni2c Ni 58.69000000 1 Y Y Y Y N N Nickel (II) ion to be used with oy in Clays
+ca2+ Ca 40.07800000 1 Y Y Y Y N N Calcium ion in zeolites
+ca2c Ca 40.07800000 1 Y Y Y Y N N Calcium ion to be used with oy in Clays
+sr2c Sr 87.62000000 1 Y Y Y Y N N Strontium ion to be used with oy in Clays
+ba2+ Ba 137.32700000 1 Y Y Y Y N N Barium ion in zeolites
+cu2+ Cu 63.54600000 1 Y Y Y Y N N Copper(II) ion in zeolites
+fe2c Fe 55.84700000 1 Y Y Y Y N N Octahedral Fe(II) ion in clays
+f- F 18.99840300 1 Y Y Y Y N N Fluoride ion in zeolites
+beoh Be 9.01218200 4 Y Y Y Y N N Beryllium (II) in water to be used with o*
+foh F 18.99840000 1 Y Y Y Y N N Fluoride ion in water to be used with o*
+cl- Cl 35.45270000 1 Y Y Y Y N N Chloride ion in zeolites
+cloh Cl 35.45270000 1 Y Y Y Y N N Chloride ion in water to be used with o*
+cly- Cl 35.45270000 1 Y Y Y Y N N Chloride ion to be used with oy in Clays
+br- Br 79.90400000 1 Y Y Y Y N N Bromide ion in zeolites
+i- I 126.90447000 1 Y Y Y Y N N Iodide ion in zeolites
+so4 S 32.06600000 1 Y Y Y Y N N Sulfur in sulphate ion to be used with oz
+so4y S 32.06600000 1 Y Y Y Y N N Sulfur in sulphate ion to be used with oy in Clays
+hocl H 1.00800000 1 Y Y Y Y N N Hydrogen in hydroxyl group in Clays
+pd2+ Pd 106.42000000 4 Y Y Y Y N N Palladium(II)
+vy V 50.94150000 4 Y Y Y Y N N Tetrahedral Vanadium to be used with oy
+al Al 26.98200000 0 Y N Y N N N Aluminium metal
+Pt Pt 195.09000000 0 Y N N N N N Platinum metal
+Pd Pd 106.40000000 0 Y N N N N N Palladium metal
+Au Au 196.96700000 0 Y N N N N N Gold metal
+Ag Ag 107.86800000 0 Y N N N N N Silver metal
+Sn Sn 118.69000000 0 N N N N N N Tin metal
+K K 39.10200000 0 N N N N N N Potassium metal
+Li Li 6.94000000 0 Y N N N N N Lithium metal
+Mo Mo 95.94000000 0 Y N N N N N Molybdenum metal
+Fe Fe 55.84700000 0 Y N N N N N Iron metal
+W W 183.85000000 0 Y N N N N N Tungsten metal
+Ni Ni 58.71000000 0 Y N N N N N Nickel metal
+Cr Cr 51.99600000 0 Y N N N N N Chromium metal
+Cu Cu 63.54600000 0 Y N N N N N Copper metal
+Pb Pb 207.20000000 0 Y N N N N N Lead metal
+
+# general_assumed_equivs.coeffs: active Bond Coeff mappings
+# Elements -> assumed FF key : availability in this .frc
+C-C -> c_-c_ : AVAILABLE
+H-H -> h_-h_ : AVAILABLE
+O-O -> o_-o_ : AVAILABLE
+N-N -> n_-n_ : AVAILABLE
+S-S -> s_-s_ : AVAILABLE
+C-H -> c_-h_ : AVAILABLE
+C-O -> c-o : AVAILABLE
+C-N -> c_-n_ : AVAILABLE
+C-S -> c_-s_ : AVAILABLE
+T-T -> t-t : UNAVAILABLE
+C-C -> C-c_ : UNAVAILABLE
+O-O -> O-* : UNAVAILABLE
+N-N -> N-* : UNAVAILABLE
+S-S -> S-* : UNAVAILABLE
+C-O -> C-* : UNAVAILABLE
+C-O -> H-*7 : UNAVAILABLE
+C-C -> O-c_ : UNAVAILABLE
+T-T -> T-t : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-O -> C-C : UNAVAILABLE
+C-C -> O-H : UNAVAILABLE
+O-C -> O-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-C -> H-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+
+# Parameter sections parsed
+angle-angle angle-angle-torsion_1 bond-angle bond-bond nonbond(12-6) out_of_plane quadratic_angle quadratic_bond torsion_1

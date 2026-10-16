@@ -1,0 +1,142 @@
+# Equivalence reference: compass_published.frc
+# Detected LAMMPS family: class2
+# Generated from the force field itself; matching is case-sensitive.
+# A self mapping means the file supplies no broader standard equivalence.
+
+# Standard equivalence table
+# Type NonB Bond [BondInct] Angle Torsion OOP
+ar ar ar ar ar ar
+c3a c3a c3a c3a c3a c3a
+c1o c1o c1o c1o c1o c1o
+c2= c2= c2= c2= c2= c2=
+c3' c3' c3' c3' c3' c3'
+c4 c4 c4 c4 c4 c4
+c41o c41o c4 c4 c4 c4
+c43o c43o c4 c4 c4 c4
+c43 c43 c4 c4 c4 c4
+c44 c44 c4 c4 c4 c4
+c4o c4o c4 c4 c4 c4
+c4z c4z c4 c4 c4 c4
+h1 h1 h1 h1 h1 h1
+h1h h1h h1h h1 h1 h1
+h1o h1o h1 h1 h1 h1
+he he he he he he
+kr kr kr kr kr kr
+n1n n1n n1n n1n n1n n1n
+n1o n1o n1o n1o n1o n1o
+n1z n1z n1t n1t n1t n1t
+n2= n2= n2= n2= n2= n2=
+n2o n2o n2o n2o n2o n2o
+n2t n2t n2t n2t n2t n2t
+n2z n2z n2z n2z n2z n2z
+n3m n3m n3m n3m n3m n3m
+n3o n3o n3o n3o n3o n3o
+ne ne ne ne ne ne
+o1= o1= o1= o1= o1= o1=
+o1=* o1=* o1= o1= o1= o1=
+o12 o12 o1= o1= o1= o1=
+o1c o1c o1c o1c o1c o1c
+o1n o1n o1n o1n o1n o1n
+o1o o1o o1o o1o o1o o1o
+o2 o2 o2 o2 o2 o2
+o2e o2e o2e o2 o2 o2
+o2h o2h o2h o2 o2 o2
+o2n o2n o2n o2n o2 o2
+o2s o2s o2e o2 o2 o2
+o2z o2z o2z o2z o2z o2z
+p4= p4= p4= p4= p4= p4=
+s1= s1= s1= s1= s1= s1=
+s2= s2= s2= s2= s2= s2=
+si4 si4 si4 si4 si4 si4
+si4c si4c si4 si4 si4 si4
+xe xe xe xe xe xe
+
+# Automatic equivalence table
+# Type NonB BondInct Bond AngleEnd AngleApex TorsionEnd TorsionCenter OOPEnd OOPCenter
+# None supplied
+
+# Atom metadata and explicit parameter participation
+# Type Element Mass Connections NonB Bond Angle Torsion OOP Cross Description
+ar Ar 39.94400000 - Y N N N N N argon
+c3a C 12.01115000 - Y Y Y Y Y Y aromatic carbon
+c1o C 12.01115000 - Y Y N N N N carbon in CO
+c2= C 12.01115000 - Y Y Y N N Y carbon in CO2 and CS2
+c3' C 12.01115000 - Y Y Y Y Y Y carbonyl carbon [one polar substituent]
+c4 C 12.01115000 - Y Y Y Y Y Y generic sp3 carbon
+c41o C 12.01115000 - Y N N N N N carbon, sp3, in methanol
+c43o C 12.01115000 - Y N N N N N carbon, sp3 in secondary alcohols
+c43 C 12.01115000 - Y N N N N N sp3 carbon with three heavy atoms attached
+c44 C 12.01115000 - Y N N N N N sp3 carbon with four heavy atoms attached
+c4o C 12.01115000 - Y N N N N N alpha carbon
+c4z C 12.01115000 - Y N N N N N carbon, sp3, bonded to -N3
+h1 H 1.00797000 - Y Y Y Y Y Y nonpolar hydrogen
+h1h H 1.00797000 - Y Y N N N N hydrogen in H2
+h1o H 1.00797000 - Y N N N N N strongly polar hydrogen, bonded to O,F
+he He 4.00300000 - Y N N N N N helium
+kr Kr 83.80000000 - Y N N N N N krypton
+n1n N 14.00670000 - Y Y N N N N nitrogen in N2
+n1o N 14.00670000 - Y Y N N N N nitrogen in NO
+n1z N 14.00670000 - Y N N N N N nitrogen, terminal atom in -N3
+n2= N 14.00670000 - Y Y Y Y Y Y nitrogen
+n2o N 14.00670000 - Y Y Y N N Y nitrogen in NO2
+n2t N 14.00670000 - Y Y Y Y N Y nitrogen, central atom in -N3
+n2z N 14.00670000 - Y Y Y Y N Y nitrogen, first atom in -N3
+n3m N 14.00670000 - Y Y Y Y Y Y sp3 nitrogen in amides without hydrogen
+n3o N 14.00670000 - Y Y Y Y Y Y nitrogen in nitro group
+ne Ne 20.18300000 - Y N N N N N neon
+o1= O 15.99940000 - Y Y Y Y Y Y oxygen in NO2 and SO2 [and carbonyl]
+o1=* O 15.99940000 - Y N N N N N oxygen in CO2
+o12 O 15.99940000 - Y N N N N N oxygen in nitro group (-NO2)
+o1c O 15.99940000 - Y Y N N N N oxygen in CO
+o1n O 15.99940000 - Y Y N N N N oxygen in NO
+o1o O 15.99940000 - Y Y N N N N oxygen in O2
+o2 O 15.99940000 - Y Y Y Y Y Y generic oxygen with two bonds attached
+o2e O 15.99940000 - Y Y N N N N ether oxygen
+o2h O 15.99940000 - Y Y N N N N hydroxyl oxygen
+o2n O 15.99940000 - Y Y Y N N Y oxygen in nitrates
+o2s O 15.99940000 - Y N N N N N ester oxygen
+o2z O 15.99940000 - Y Y Y Y N Y oxygen, in siloxanes and zeolites
+p4= P 30.97380000 - Y Y Y Y Y Y phosphorous
+s1= S 32.06400000 - Y Y Y N N Y sulfur in CS2
+s2= S 32.06400000 - Y Y Y N N Y sulfur in SO2
+si4 Si 28.08600000 - Y Y Y Y Y Y generic silicon with four bonds attached
+si4c Si 28.08600000 - Y N N N N N a subset of si4, non-hydrogen atom attached [siloxanes]
+xe Xe 131.30000000 - Y N N N N N xenon
+
+# general_assumed_equivs.coeffs: active Bond Coeff mappings
+# Elements -> assumed FF key : availability in this .frc
+C-C -> c_-c_ : UNAVAILABLE
+H-H -> h_-h_ : UNAVAILABLE
+O-O -> o_-o_ : UNAVAILABLE
+N-N -> n_-n_ : UNAVAILABLE
+S-S -> s_-s_ : UNAVAILABLE
+C-H -> c_-h_ : UNAVAILABLE
+C-O -> c-o : UNAVAILABLE
+C-N -> c_-n_ : UNAVAILABLE
+C-S -> c_-s_ : UNAVAILABLE
+T-T -> t-t : UNAVAILABLE
+C-C -> C-c_ : UNAVAILABLE
+O-O -> O-* : UNAVAILABLE
+N-N -> N-* : UNAVAILABLE
+S-S -> S-* : UNAVAILABLE
+C-O -> C-* : UNAVAILABLE
+C-O -> H-*7 : UNAVAILABLE
+C-C -> O-c_ : UNAVAILABLE
+T-T -> T-t : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-O -> C-C : UNAVAILABLE
+C-C -> O-H : UNAVAILABLE
+O-C -> O-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+C-C -> C-C : UNAVAILABLE
+O-O -> O-O : UNAVAILABLE
+N-N -> N-N : UNAVAILABLE
+S-S -> S-S : UNAVAILABLE
+C-C -> H-H : UNAVAILABLE
+T-T -> T-T : UNAVAILABLE
+
+# Parameter sections parsed
+angle-angle angle-angle-torsion_1 angle-torsion_3 bond-angle bond-bond bond-bond_1_3 end_bond-torsion_3 middle_bond-torsion_3 nonbond(9-6) quartic_angle quartic_bond torsion_3 wilson_out_of_plane
