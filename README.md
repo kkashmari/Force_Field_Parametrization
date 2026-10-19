@@ -62,9 +62,7 @@ downloaded LAMMPS data file or complete ZIP bundle:
 ```bash
 python parameterize.py molecule.lmp --ff ligpargen -o molecule_opls
 ```
-
-This workflow does not use a Tinker `.frc`, retype atoms, recalculate charges,
-or alter coefficients. It validates the native LigParGen/BOSS LAMMPS topology
+It validates the native LigParGen/BOSS LAMMPS topology
 and coefficient tables, preserves the data, and creates a `run 0` input
 with the required OPLS styles. Outputs are the copied `.data`,
 `in.*_ligpargen_opls`, and `audit.json`. ZIP input is supported when it
@@ -87,8 +85,7 @@ selected types are preserved and the completed data file is written inside the
 requested output directory.
 
 The builder reports exact, equivalence, wildcard/similarity fallback, and
-missing counts. Missing terms remain visible in the report and must not be
-called successful parameterization.
+missing counts. Missing terms remain visible in the report
 
 ## GAFF2
 
