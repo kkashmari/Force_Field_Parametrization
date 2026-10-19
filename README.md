@@ -10,7 +10,8 @@ Version: 8.0.0
 ### Required packages
 
 - GUI: Tkinter (included in the `ffbuild` Miniforge environment).
-- LigParGen import: Python standard library only.
+- LigParGen import and web generation: Python standard library only; internet
+  access is required when generating directly from SMILES.
 - GAFF2: Open Babel, AmberTools, ParmEd, NumPy, and AMBER2LAMMPS.
 - UFF: Open Babel and `lammps-interface`.
 - Existing `.frc`: Python standard library; Open Babel/AmberTools/RDKit are
@@ -45,14 +46,33 @@ matching `.nta`. Output is shown live in the window.
 
 ## LigParGen OPLS-AA
 
-Generate the molecule on the official LigParGen website and download either
-its LAMMPS data file or complete ZIP bundle. Then run:
+The program can submit a SMILES string to LigParGen, download its native
+results ZIP, select the LAMMPS file, validate it, and write the final OPLS-AA
+data file:
+
+```bash
+python parameterize.py --smiles 'CCO' --ff ligpargen --name ethanol \
+  --charge 0 --ligpargen-charge-model CM1A-LBCC --ligpargen-opt 0 \
+  -o ethanol_opls
+```
+
+`CM1A-LBCC` is restricted to neutral molecules. For a charged molecule use,
+for example, `--charge -1 --ligpargen-charge-model CM1A`. Optimization can be
+`0`, `1`, `2`, or `3`. The default runner is LigParGen's public web service.
+The submitted SMILES is sent to that service and its job/rate limits apply.
+
+To use a local LigParGen Docker image built with your licensed BOSS install,
+add `--ligpargen-runner docker`. The default image is `ligpargen:dev`; override
+it with `--ligpargen-docker-image IMAGE`.
+
+You can still generate the molecule manually on LigParGen and import its
+downloaded LAMMPS data file or complete ZIP bundle:
 
 ```bash
 python parameterize.py molecule.lmp --ff ligpargen -o molecule_opls
 ```
 
-The importer does not use a Tinker `.frc`, retype atoms, recalculate charges,
+This workflow does not use a Tinker `.frc`, retype atoms, recalculate charges,
 or alter coefficients. It validates the native LigParGen/BOSS LAMMPS topology
 and coefficient tables, preserves the data, and creates a `run 0` input
 with the required OPLS styles. Outputs are the copied `.data`,

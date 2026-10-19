@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 # Author: Khatereh Kashmari
-# Date: 2026-08-10
-# Version: 8.0.0
-# Required packages: Open Babel 3; optional AmberTools for AM1-BCC
-"""Open Babel UFF/GAFF setup, typing, and audit backend.
+"""Prepare structures and audit UFF/GAFF setup with Open Babel.
 
-This backend intentionally does not manufacture LAMMPS coefficients.  Open
-Babel's public command line interface evaluates force fields but does not
-export its internal bonded parameter tables in LAMMPS form.
+Open Babel evaluates the force field but does not export its bonded parameter
+tables in LAMMPS form. This module writes the prepared structure and audit.
 """
 
 from __future__ import annotations
@@ -32,7 +28,9 @@ def run_checked(command: list[str], *, stdout_path: Path | None = None) -> str:
     result = subprocess.run(command, text=True, capture_output=True)
     if result.returncode:
         detail = (result.stderr or result.stdout).strip()
-        raise RuntimeError(f"Command failed ({result.returncode}): {' '.join(command)}\n{detail}")
+        raise RuntimeError(
+            f"Command failed ({result.returncode}): {' '.join(command)}\n{detail}"
+        )
     if stdout_path is not None:
         stdout_path.write_text(result.stdout, encoding="utf-8")
     return result.stdout
@@ -50,7 +48,9 @@ def charge_policy(ff: str, requested: str) -> tuple[str, list[str]]:
         if method == "auto":
             method = "am1-bcc" if executable("antechamber") else "gasteiger"
         if method == "am1-bcc" and not executable("antechamber"):
-            raise RuntimeError("GAFF AM1-BCC was requested, but 'antechamber' is not installed.")
+            raise RuntimeError(
+                "GAFF AM1-BCC was requested, but 'antechamber' is not installed."
+            )
         if method != "am1-bcc":
             warnings.append(
                 "GAFF is normally paired with RESP or AM1-BCC charges; the selected "
@@ -90,9 +90,7 @@ def prepare(input_path: str, ff: str, output_prefix: str, charge: str = "auto") 
     audit_path = prefix.with_name(prefix.name + f"_{ff_key}_audit.json")
 
     charge_method, warnings = charge_policy(ff_key, charge)
-    # -h makes hydrogen handling explicit.  Partial charges are assigned by
-    # Open Babel's Gasteiger model where requested; AM1-BCC is handled by
-    # AmberTools/antechamber and is not silently substituted.
+    # Add hydrogens before typing; assign Gasteiger charges when requested.
     convert = [obabel, str(source), "-O", str(typed_mol2), "-h"]
     if charge_method == "gasteiger":
         convert.extend(["--partialcharge", "gasteiger"])
@@ -100,7 +98,10 @@ def prepare(input_path: str, ff: str, output_prefix: str, charge: str = "auto") 
 
     energy_text = run_checked([obenergy, "-ff", SUPPORTED[ff_key], str(typed_mol2)])
     energy_log.write_text(energy_text, encoding="utf-8")
-    setup_ok = "could not setup" not in energy_text.lower() and "error" not in energy_text.lower()
+    setup_ok = (
+        "could not setup" not in energy_text.lower()
+        and "error" not in energy_text.lower()
+    )
 
     audit = {
         "backend": "openbabel",
@@ -123,11 +124,15 @@ def prepare(input_path: str, ff: str, output_prefix: str, charge: str = "auto") 
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Prepare and audit UFF/GAFF with Open Babel")
+    parser = argparse.ArgumentParser(
+        description="Prepare and audit UFF/GAFF with Open Babel"
+    )
     parser.add_argument("input")
     parser.add_argument("--ff", required=True, choices=sorted(SUPPORTED))
     parser.add_argument("-o", "--output-prefix", required=True)
-    parser.add_argument("--charge", default="auto", choices=("auto", "gasteiger", "am1-bcc"))
+    parser.add_argument(
+        "--charge", default="auto", choices=("auto", "gasteiger", "am1-bcc")
+    )
     args = parser.parse_args()
     try:
         audit = prepare(args.input, args.ff, args.output_prefix, args.charge)
