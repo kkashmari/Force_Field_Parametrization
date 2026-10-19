@@ -3,9 +3,8 @@
 This package combines a native LigParGen OPLS-AA importer, the corrected
 `.frc` builder, and automatic GAFF2 and UFF pipelines.
 
-Author: Khatereh Kashmari  
+Khatereh Kashmari  
 Date: 2026-08-10  
-Version: 8.0.0
 
 ### Required packages
 
