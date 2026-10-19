@@ -1,0 +1,51 @@
+{
+  "forcefield": "OPLS-AA",
+  "parameter_source": "LigParGen/BOSS native LAMMPS output",
+  "status": "complete",
+  "input": "SMILES",
+  "archive_member": "GDK.lmp",
+  "source_sha256": "0fcd670890afcb982119608b8fe0e12ee485f9164f7b6c0d1aad8b9a9f93a396",
+  "output_sha256": "0fcd670890afcb982119608b8fe0e12ee485f9164f7b6c0d1aad8b9a9f93a396",
+  "data_file": "/Users/khatereh/Desktop/Research/Polymer_CoScientist/Force_Field_Parametrization/Pegda_LipGen/Pegda_Mn_250_ligpargen_opls.data",
+  "lammps_input": "/Users/khatereh/Desktop/Research/Polymer_CoScientist/Force_Field_Parametrization/Pegda_LipGen/in.Pegda_Mn_250_ligpargen_opls",
+  "data_preserved_verbatim": true,
+  "metadata_repairs": [],
+  "tinker_parameters_used": false,
+  "atom_typing_performed_locally": false,
+  "charges_modified": false,
+  "required_lammps_styles": {
+    "pair": "lj/cut/coul/long",
+    "mixing": "geometric",
+    "bond": "harmonic",
+    "angle": "harmonic",
+    "dihedral": "opls",
+    "improper": "cvff",
+    "special_bonds": "lj/coul 0.0 0.0 0.5"
+  },
+  "counts": {
+    "atoms": 36,
+    "bonds": 35,
+    "angles": 58,
+    "dihedrals": 65,
+    "impropers": 6
+  },
+  "type_counts": {
+    "atom": 36,
+    "bond": 35,
+    "angle": 58,
+    "dihedral": 65,
+    "improper": 6
+  },
+  "net_charge": 1.2000000000074451e-05,
+  "nearest_integer_charge": 0,
+  "warnings": [],
+  "input_smiles": "C=CC(=O)OCCOCCOCCOC(=O)C=C",
+  "ligpargen_generation": {
+    "runner": "web",
+    "service": "https://lsdodda-ligpargen.hf.space",
+    "event_id": "6fb6b971456e48afbc11354611c7522f",
+    "formal_charge": 0,
+    "optimization_iterations": 0,
+    "charge_model": "CM1A-LBCC"
+  }
+}
