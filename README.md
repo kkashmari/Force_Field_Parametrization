@@ -27,14 +27,6 @@ python3 parameterize.py
 
 The command-line arguments described below remain available for batch jobs.
 
-## Desktop GUI
-
-On macOS, double-click `launch_gui.command`, or run:
-
-```bash
-/usr/local/Caskroom/miniforge/base/envs/ffbuild/bin/python parameterize_gui.py
-```
-
 Choose the input, force field, and output folder, then click **Run
 parameterization**. GAFF2-specific fields and existing `.frc` fields appear
 only when those workflows are selected. For `.frc`, atom typing and `.nta`
