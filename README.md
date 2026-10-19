@@ -1,7 +1,7 @@
 # Force-field parameterization tool
 
-This package combines the corrected `.frc` builder with automatic native
-GAFF2 and UFF pipelines for MOL2 and POSCAR inputs.
+This package combines a native LigParGen OPLS-AA importer, the corrected
+`.frc` builder, and automatic GAFF2 and UFF pipelines.
 
 Author: Khatereh Kashmari  
 Date: 2026-08-10  
@@ -10,6 +10,7 @@ Version: 8.0.0
 ### Required packages
 
 - GUI: Tkinter (included in the `ffbuild` Miniforge environment).
+- LigParGen import: Python standard library only.
 - GAFF2: Open Babel, AmberTools, ParmEd, NumPy, and AMBER2LAMMPS.
 - UFF: Open Babel and `lammps-interface`.
 - Existing `.frc`: Python standard library; Open Babel/AmberTools/RDKit are
@@ -41,6 +42,27 @@ generation run first automatically; that new `.nta` is then used to build the
 LAMMPS data file. To keep manually checked atom types, select **Use an existing
 .nta file (manual atom types)** and choose a LAMMPS `.data` input plus its
 matching `.nta`. Output is shown live in the window.
+
+## LigParGen OPLS-AA
+
+Generate the molecule on the official LigParGen website and download either
+its LAMMPS data file or complete ZIP bundle. Then run:
+
+```bash
+python parameterize.py molecule.lmp --ff ligpargen -o molecule_opls
+```
+
+The importer does not use a Tinker `.frc`, retype atoms, recalculate charges,
+or alter coefficients. It validates the native LigParGen/BOSS LAMMPS topology
+and coefficient tables, preserves the data, and creates a `run 0` input
+with the required OPLS styles. Outputs are the copied `.data`,
+`in.*_ligpargen_opls`, and `audit.json`. ZIP input is supported when it
+contains exactly one recognizable LigParGen LAMMPS data file.
+
+Some legacy LigParGen 2.1 files contain an incorrect header count for improper
+interactions. When detected, the importer corrects only that count to match the
+existing `Impropers` rows and records the repair in `audit.json`; it never
+creates or changes a force-field term.
 
 ## Existing `.frc` force fields
 

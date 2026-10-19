@@ -95,7 +95,8 @@ class ParameterizationGUI(tk.Tk):
         ttk.Label(frame, text="Force field").grid(row=2, column=0, sticky="w", pady=7)
         ff_frame = ttk.Frame(frame)
         ff_frame.grid(row=2, column=1, columnspan=2, sticky="w")
-        for text, value in (("GAFF2", "gaff2"), ("UFF", "uff"),
+        for text, value in (("LigParGen OPLS-AA", "ligpargen"),
+                            ("GAFF2", "gaff2"), ("UFF", "uff"),
                             ("Existing .frc (auto type + build)", "frc")):
             ttk.Radiobutton(ff_frame, text=text, value=value, variable=self.ff_var,
                             command=self._update_fields).pack(side="left", padx=(0, 18))
@@ -248,6 +249,11 @@ class ParameterizationGUI(tk.Tk):
                 command += ["--amber-converter", self.converter_var.get().strip()]
         elif ff == "uff":
             command += ["--ff", "uff"]
+        elif ff == "ligpargen":
+            if source.suffix.lower() not in {".data", ".lmp", ".zip"}:
+                raise ValueError(
+                    "LigParGen input must be its downloaded .data, .lmp, or ZIP file.")
+            command += ["--ff", "ligpargen"]
         else:
             frc = Path(self.frc_var.get())
             if not frc.is_file() or frc.suffix.lower() != ".frc":
