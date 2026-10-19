@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 # Author: Khatereh Kashmari
-"""Prepare LAMMPS inputs with LigParGen, a .frc file, GAFF2, or UFF."""
+# Date: 2026-08-10
+# Version: 9.0.0
+# Required packages: standard library for LigParGen; otherwise selected backend dependencies
+"""Single entry point for LigParGen, .frc, GAFF2, and UFF workflows."""
 
 from __future__ import annotations
 
 import argparse
-import json
 import subprocess
 import sys
 from pathlib import Path
+
+import json
 
 from native_lammps_backends import PipelineError, gaff2, uff
 from frc_pipeline import run_frc_pipeline
@@ -70,89 +74,38 @@ def ask_float(label: str, default: float) -> float:
             print("Enter a number.")
 
 
-def build_parser() -> argparse.ArgumentParser:
+def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "input",
-        nargs="?",
-        help=("LigParGen .data/.lmp/.zip, MOL2, LAMMPS data, or POSCAR structure"),
-    )
-    parser.add_argument(
-        "--smiles",
-        help=("SMILES input for LigParGen; use instead of the positional input file"),
-    )
+    parser.add_argument("input", nargs="?", help=(
+        "LigParGen .data/.lmp/.zip, MOL2, LAMMPS data, or POSCAR structure"))
+    parser.add_argument("--smiles", help=(
+        "SMILES input for LigParGen; use instead of the positional input file"))
     parser.add_argument("--ff", help="Path to .frc, 'ligpargen', 'gaff2', or 'uff'")
     parser.add_argument("-o", "--output", help="New output directory")
-    parser.add_argument(
-        "--charge", type=int, help="Integer net charge (GAFF2; default 0)"
-    )
+    parser.add_argument("--charge", type=int, help="Integer net charge (GAFF2; default 0)")
     parser.add_argument("--name", help="Output basename; defaults to input basename")
-    parser.add_argument(
-        "--buffer", type=float, help="GAFF2 box padding in Angstrom (default 5.0)"
-    )
+    parser.add_argument("--buffer", type=float, help="GAFF2 box padding in Angstrom (default 5.0)")
     parser.add_argument("--amber-converter", help="Path to amber_to_lammps.py")
-    parser.add_argument(
-        "--nta",
-        help=(
-            "Existing .nta file for manual atom types; input must be a LAMMPS .data file"
-        ),
-    )
-    parser.add_argument(
-        "--frc-charge",
-        default="auto",
-        choices=("auto", "gasteiger", "bond_increments", "fixed", "am1bcc", "input"),
-        help="Charge method for automatic .frc typing (default: auto)",
-    )
-    parser.add_argument(
-        "--ligpargen-runner",
-        choices=("web", "docker"),
-        default="web",
-        help="Generate from SMILES using the public web service or local Docker",
-    )
-    parser.add_argument(
-        "--ligpargen-charge-model",
-        choices=("CM1A-LBCC", "CM1A"),
-        default="CM1A-LBCC",
-        help="LigParGen partial-charge model",
-    )
-    parser.add_argument(
-        "--ligpargen-opt",
-        type=int,
-        choices=range(4),
-        default=0,
-        metavar="{0,1,2,3}",
-        help="BOSS optimization iterations",
-    )
-    parser.add_argument(
-        "--ligpargen-timeout",
-        type=float,
-        default=180.0,
-        help="Generation timeout in seconds (default 180)",
-    )
-    parser.add_argument(
-        "--ligpargen-space-url",
-        default="https://lsdodda-ligpargen.hf.space",
-        help=argparse.SUPPRESS,
-    )
-    parser.add_argument(
-        "--ligpargen-docker-image",
-        default="ligpargen:dev",
-        help="Local LigParGen Docker image (default ligpargen:dev)",
-    )
-    return parser
+    parser.add_argument("--nta", help=(
+        "Existing .nta file for manual atom types; input must be a LAMMPS .data file"))
+    parser.add_argument("--frc-charge", default="auto", choices=(
+        "auto", "gasteiger", "bond_increments", "fixed", "am1bcc", "input"),
+        help="Charge method for automatic .frc typing (default: auto)")
+    parser.add_argument("--ligpargen-charge-model", choices=("CM1A-LBCC", "CM1A"),
+                        default="CM1A-LBCC", help="LigParGen partial-charge model")
+    parser.add_argument("--ligpargen-opt", type=int, choices=range(4), default=0,
+                        metavar="{0,1,2,3}", help="BOSS optimization iterations")
+    parser.add_argument("--ligpargen-timeout", type=float, default=180.0,
+                        help="Generation timeout in seconds (default 180)")
+    parser.add_argument("--ligpargen-space-url",
+                        default="https://lsdodda-ligpargen.hf.space",
+                        help=argparse.SUPPRESS)
+    args = parser.parse_args()
+    root = Path(__file__).resolve().parent
 
-
-def resolve_inputs(
-    args: argparse.Namespace, parser: argparse.ArgumentParser
-) -> tuple[Path | None, str]:
-    """Prompt for missing options and check that they describe a valid workflow."""
     if args.input and args.smiles:
         parser.error("Use either an input file or --smiles, not both.")
-    interactive = (
-        (args.input is None and args.smiles is None)
-        or args.ff is None
-        or args.output is None
-    )
+    interactive = (args.input is None and args.smiles is None) or args.ff is None or args.output is None
     if interactive:
         print("\nLAMMPS FORCE-FIELD PARAMETERIZATION WIZARD")
         print("------------------------------------------")
@@ -160,9 +113,7 @@ def resolve_inputs(
         args.ff = ask_forcefield()
     if args.input is None and args.smiles is None:
         if args.ff.lower() == "ligpargen":
-            entered = input(
-                "SMILES [press Enter to import a downloaded LigParGen file]: "
-            ).strip()
+            entered = input("SMILES [press Enter to import a downloaded LigParGen file]: ").strip()
             if entered:
                 args.smiles = entered
             else:
@@ -187,40 +138,22 @@ def resolve_inputs(
         if args.charge is None:
             args.charge = ask_int("Net molecular charge", 0) if interactive else 0
         if args.buffer is None:
-            args.buffer = (
-                ask_float("Vacuum/box padding (Angstrom)", 5.0) if interactive else 5.0
-            )
+            args.buffer = ask_float("Vacuum/box padding (Angstrom)", 5.0) if interactive else 5.0
         if args.amber_converter is None and interactive:
-            entered = clean_path(
-                input("Path to amber_to_lammps.py [press Enter for automatic search]: ")
-            )
+            entered = clean_path(input(
+                "Path to amber_to_lammps.py [press Enter for automatic search]: "))
             args.amber_converter = entered or None
     else:
         args.charge = 0 if args.charge is None else args.charge
         args.buffer = 5.0 if args.buffer is None else args.buffer
-    return source, name
-
-
-def main() -> int:
-    parser = build_parser()
-    args = parser.parse_args()
-    source, name = resolve_inputs(args, parser)
-    root = Path(__file__).resolve().parent
     out_dir = Path(args.output).expanduser().resolve()
     try:
         if args.ff.lower() == "ligpargen":
             if args.smiles:
                 audit = parameterize_smiles(
-                    args.smiles,
-                    out_dir,
-                    name,
-                    args.charge,
-                    args.ligpargen_opt,
-                    args.ligpargen_charge_model,
-                    args.ligpargen_runner,
-                    args.ligpargen_timeout,
+                    args.smiles, out_dir, name, args.charge, args.ligpargen_opt,
+                    args.ligpargen_charge_model, args.ligpargen_timeout,
                     args.ligpargen_space_url,
-                    args.ligpargen_docker_image,
                 )
             else:
                 if source is None:
@@ -229,9 +162,8 @@ def main() -> int:
         elif args.ff.lower() == "gaff2":
             if source is None:
                 parser.error("GAFF2 requires an input structure file.")
-            audit = gaff2(
-                source, out_dir, name, args.charge, args.amber_converter, args.buffer
-            )
+            audit = gaff2(source, out_dir, name, args.charge,
+                          args.amber_converter, args.buffer)
         elif args.ff.lower() == "uff":
             if source is None:
                 parser.error("UFF requires an input structure file.")
@@ -248,9 +180,7 @@ def main() -> int:
 
     frc = Path(args.ff).expanduser().resolve()
     if not frc.is_file() or frc.suffix.lower() != ".frc":
-        parser.error(
-            "--ff must be an existing .frc file, 'ligpargen', 'uff', or 'gaff2'"
-        )
+        parser.error("--ff must be an existing .frc file, 'ligpargen', 'uff', or 'gaff2'")
     if args.nta:
         if source is None:
             parser.error("--nta requires an input LAMMPS data file.")
@@ -263,25 +193,17 @@ def main() -> int:
             return 2
         out_dir.mkdir(parents=True, exist_ok=True)
         out = out_dir / f"{name}_{frc.stem}.data"
-        code = subprocess.call(
-            [
-                sys.executable,
-                str(root / "build_input_lmp.py"),
-                args.input,
-                str(nta),
-                str(frc),
-                str(out),
-            ]
-        )
+        code = subprocess.call([
+            sys.executable, str(root / "build_input_lmp.py"), args.input,
+            str(nta), str(frc), str(out),
+        ])
         if code == 0:
             print(f"\nUsed existing NTA: {nta}")
             print(f"Generated LAMMPS data: {out}")
         return code
     try:
         if source is None:
-            parser.error(
-                "An input structure file is required for .frc parameterization."
-            )
+            parser.error("An input structure file is required for .frc parameterization.")
         audit = run_frc_pipeline(source, frc, out_dir, name, args.frc_charge)
     except (OSError, ValueError, RuntimeError) as exc:
         print(f"[ERROR] {exc}", file=sys.stderr)
@@ -290,9 +212,7 @@ def main() -> int:
     print(f"\nGenerated NTA: {audit['nta_file']}")
     print(f"Generated LAMMPS data: {audit['lammps_data']}")
     if audit["status"] != "complete":
-        print(
-            f"WARNING: coefficient coverage is {audit['total_coverage_percent']:.2f}%"
-        )
+        print(f"WARNING: coefficient coverage is {audit['total_coverage_percent']:.2f}%")
         return 3
     return 0
 

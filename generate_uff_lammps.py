@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-# Author: Khatereh Kashmari
-"""Convert a POSCAR structure to UFF LAMMPS data and an equilibration input."""
+"""POSCAR to UFF LAMMPS data and.in LAMMPS script
+Author : Khatereh Kashmari
+"""
 
 from __future__ import annotations
 
@@ -14,13 +15,16 @@ import sys
 from pathlib import Path
 
 
+# ------------------------ USER SETTINGS ---------------------------
 
 INPUT_DIRECTORY = Path(
-    ""
+    "/Users/khatereh/Desktop/Research/Polymer_CoScientist/ff_parameterization_tool"
 )
 INPUT_POSCAR_NAME = "amor_model.vasp"
 OUTPUT_DIRECTORY = INPUT_DIRECTORY / "amor_model_UFF_generated"
 SYSTEM_NAME = "amor_model"
+
+# ------------------------------------------------------------------
 
 
 class GenerationError(RuntimeError):
@@ -67,11 +71,9 @@ def run(command: list[str], cwd: Path, log: Path) -> str:
 def validate_poscar(path: Path) -> None:
     if not path.is_file():
         raise GenerationError(f"POSCAR file not found: {path}")
-    if path.suffix.lower() not in {
-        ".vasp",
-        ".poscar",
-        "",
-    } and path.name.upper() not in {"POSCAR", "CONTCAR"}:
+    if path.suffix.lower() not in {".vasp", ".poscar", ""} and path.name.upper() not in {
+        "POSCAR", "CONTCAR"
+    }:
         raise GenerationError("Input must be POSCAR, CONTCAR, .vasp, or .poscar")
 
 
@@ -84,34 +86,22 @@ def make_p1_cif(source: Path, destination: Path, log: Path) -> None:
     if not destination.is_file() or destination.stat().st_size == 0:
         raise GenerationError(f"Open Babel did not create {destination}")
     text = destination.read_text(encoding="utf-8", errors="replace")
-    if not all(
-        key in text for key in ("_cell_length_a", "_cell_length_b", "_cell_length_c")
-    ):
+    if not all(key in text for key in ("_cell_length_a", "_cell_length_b", "_cell_length_c")):
         raise GenerationError("Open Babel did not preserve the POSCAR lattice")
 
 
 def lammps_input(system_id: str, data_name: str) -> str:
     stages = [
-        ("nvt", 1000, None, 50000),
-        ("nvt", 300, None, 50000),
-        ("npt", 300, 986.92326, 50000),
-        ("nvt", 1000, None, 50000),
-        ("nvt", 300, None, 100000),
-        ("npt", 300, 29607.6978, 50000),
-        ("nvt", 1000, None, 50000),
-        ("nvt", 300, None, 100000),
-        ("npt", 300, 49346.163, 50000),
-        ("nvt", 1000, None, 50000),
-        ("nvt", 300, None, 100000),
-        ("npt", 300, 24673.0815, 5000),
-        ("nvt", 1000, None, 5000),
-        ("nvt", 300, None, 10000),
-        ("npt", 300, 4934.6163, 5000),
-        ("nvt", 1000, None, 5000),
-        ("nvt", 300, None, 10000),
-        ("npt", 300, 493.46163, 5000),
-        ("nvt", 1000, None, 5000),
-        ("nvt", 300, None, 10000),
+        ("nvt", 1000, None, 50000), ("nvt", 300, None, 50000),
+        ("npt", 300, 986.92326, 50000), ("nvt", 1000, None, 50000),
+        ("nvt", 300, None, 100000), ("npt", 300, 29607.6978, 50000),
+        ("nvt", 1000, None, 50000), ("nvt", 300, None, 100000),
+        ("npt", 300, 49346.163, 50000), ("nvt", 1000, None, 50000),
+        ("nvt", 300, None, 100000), ("npt", 300, 24673.0815, 5000),
+        ("nvt", 1000, None, 5000), ("nvt", 300, None, 10000),
+        ("npt", 300, 4934.6163, 5000), ("nvt", 1000, None, 5000),
+        ("nvt", 300, None, 10000), ("npt", 300, 493.46163, 5000),
+        ("nvt", 1000, None, 5000), ("nvt", 300, None, 10000),
         ("npt", 300, 1.0, 800000),
     ]
     protocol: list[str] = []
@@ -224,48 +214,33 @@ def generate(source: Path, output: Path, name: str) -> dict:
 
     before = {item.resolve() for item in output.iterdir()}
     report = run([find_command("lammps-interface"), cif.name], output, log)
-    created = [
-        item
-        for item in output.iterdir()
-        if item.is_file() and item.resolve() not in before
-    ]
-    data_files = [
-        item
-        for item in created
-        if item.suffix.lower() in {".data", ".lmp"} or "data" in item.name.lower()
-    ]
+    created = [item for item in output.iterdir()
+               if item.is_file() and item.resolve() not in before]
+    data_files = [item for item in created
+                  if item.suffix.lower() in {".data", ".lmp"}
+                  or "data" in item.name.lower()]
     if len(data_files) != 1:
         detected = ", ".join(item.name for item in data_files) or "none"
         raise GenerationError(f"Expected one LAMMPS data file; detected: {detected}")
-    problems = [
-        line.strip()
-        for line in report.splitlines()
-        if re.search(r"missing|untyped|could not|error", line, re.I)
-    ]
+    problems = [line.strip() for line in report.splitlines()
+                if re.search(r"missing|untyped|could not|error", line, re.I)]
     if problems:
-        raise GenerationError(
-            "UFF typing/parameter problem:\n  " + "\n  ".join(problems[:20])
-        )
+        raise GenerationError("UFF typing/parameter problem:\n  " + "\n  ".join(problems[:20]))
 
     for item in created:
         if item.name.startswith("in.") or item.suffix.lower() == ".in":
             item.unlink()
     input_file = output / f"in.{name}_P1"
-    input_file.write_text(
-        lammps_input(f"{name}_P1", data_files[0].name), encoding="utf-8"
-    )
+    input_file.write_text(lammps_input(f"{name}_P1", data_files[0].name),
+                          encoding="utf-8")
     audit = {
-        "forcefield": "UFF",
-        "status": "complete",
-        "source": str(source),
-        "lammps_data": str(data_files[0]),
-        "lammps_input": str(input_file),
+        "forcefield": "UFF", "status": "complete", "source": str(source),
+        "lammps_data": str(data_files[0]), "lammps_input": str(input_file),
         "pipeline_log": str(log),
         "warning": "Bonds and UFF types are inferred from geometry and must be inspected.",
     }
-    (output / "audit.json").write_text(
-        json.dumps(audit, indent=2) + "\n", encoding="utf-8"
-    )
+    (output / "audit.json").write_text(json.dumps(audit, indent=2) + "\n",
+                                       encoding="utf-8")
     return audit
 
 
@@ -285,11 +260,8 @@ def main() -> int:
         source = Path(clean_path(args.input)).expanduser().resolve()
     else:
         source = (INPUT_DIRECTORY / INPUT_POSCAR_NAME).expanduser().resolve()
-    name = args.name or (
-        SYSTEM_NAME
-        if not args.input
-        else (source.stem if source.suffix else source.name.lower())
-    )
+    name = args.name or (SYSTEM_NAME if not args.input else
+                         (source.stem if source.suffix else source.name.lower()))
     if args.output:
         output = Path(clean_path(args.output)).expanduser().resolve()
     else:

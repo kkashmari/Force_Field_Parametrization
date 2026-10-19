@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # Author: Khatereh Kashmari
+# Date: 2026-08-10
+# Version: 8.0.0
+# Required packages: ParmEd (Python); AmberTools topology files
 """Restore AMBER/GAFF improper torsions omitted by AMBER2LAMMPS."""
 
 from __future__ import annotations
@@ -13,7 +16,6 @@ import parmed as pmd
 
 
 def phase_sign(phase: float) -> int:
-    """Convert a 0- or 180-degree phase to the sign used by cvff impropers."""
     normalized = phase % 360.0
     if math.isclose(normalized, 0.0, abs_tol=1.0e-3):
         return 1
@@ -25,7 +27,6 @@ def phase_sign(phase: float) -> int:
 
 
 def add_impropers(data_path: Path, params_path: Path, prmtop_path: Path) -> int:
-    """Append AMBER improper terms and update the LAMMPS header counts."""
     topology = pmd.load_file(str(prmtop_path))
     impropers = [item for item in topology.dihedrals if item.improper]
     if not impropers:
@@ -38,44 +39,25 @@ def add_impropers(data_path: Path, params_path: Path, prmtop_path: Path) -> int:
         if hasattr(dtype, "__iter__") and not hasattr(dtype, "phi_k"):
             terms = list(dtype)
             if len(terms) != 1:
-                raise ValueError(
-                    "Multi-term AMBER impropers are not supported by cvff export"
-                )
+                raise ValueError("Multi-term AMBER impropers are not supported by cvff export")
             dtype = terms[0]
-        signature = (
-            round(float(dtype.phi_k), 10),
-            phase_sign(float(dtype.phase)),
-            int(dtype.per),
-        )
+        signature = (round(float(dtype.phi_k), 10), phase_sign(float(dtype.phase)),
+                     int(dtype.per))
         type_id = signatures.setdefault(signature, len(signatures) + 1)
-        rows.append(
-            (
-                index,
-                type_id,
-                item.atom1.idx + 1,
-                item.atom2.idx + 1,
-                item.atom3.idx + 1,
-                item.atom4.idx + 1,
-            )
-        )
+        rows.append((index, type_id, item.atom1.idx + 1, item.atom2.idx + 1,
+                     item.atom3.idx + 1, item.atom4.idx + 1))
 
     data_text = data_path.read_text(encoding="utf-8")
     data_text, n_count = re.subn(
         r"(?m)^(\d+) dihedrals\s*$",
         lambda match: f"{match.group(0)}\n{len(rows)} impropers",
-        data_text,
-        count=1,
-    )
+        data_text, count=1)
     data_text, n_types = re.subn(
         r"(?m)^(\d+) dihedral types\s*$",
         lambda match: f"{match.group(0)}\n{len(signatures)} improper types",
-        data_text,
-        count=1,
-    )
+        data_text, count=1)
     if n_count != 1 or n_types != 1:
-        raise ValueError(
-            "Could not locate LAMMPS dihedral header lines for improper insertion"
-        )
+        raise ValueError("Could not locate LAMMPS dihedral header lines for improper insertion")
     data_text = data_text.rstrip() + "\n\nImpropers\n\n"
     data_text += "\n".join("%d %d %d %d %d %d" % row for row in rows) + "\n"
     data_path.write_text(data_text, encoding="utf-8")
@@ -84,9 +66,7 @@ def add_impropers(data_path: Path, params_path: Path, prmtop_path: Path) -> int:
     params_text += "\n\n# Improper coefficients restored from AMBER topology\n"
     for signature, type_id in sorted(signatures.items(), key=lambda item: item[1]):
         force, sign, periodicity = signature
-        params_text += (
-            f"improper_coeff {type_id} {force:.10g} {sign:d} {periodicity:d}\n"
-        )
+        params_text += f"improper_coeff {type_id} {force:.10g} {sign:d} {periodicity:d}\n"
     params_path.write_text(params_text, encoding="utf-8")
     return len(rows)
 

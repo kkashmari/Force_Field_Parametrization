@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Validate and import LigParGen LAMMPS output without changing parameters.
+"""Import and validate native LigParGen LAMMPS OPLS-AA output.
 
-Atom types, charges, and coefficient rows come from LigParGen/BOSS. A known
-legacy improper-count error is corrected in the header and recorded in the
-audit. SMILES jobs can use the web service or a local Docker image.
+This backend deliberately performs no atom typing or parameter substitution.
+LigParGen/BOSS remains the authority for atom types, CM1A(-LBCC) charges, and
+all force-field coefficients. Force-field rows are copied byte-for-byte; a
+known invalid legacy improper-count header can be corrected and audited.
 """
 
 from __future__ import annotations
@@ -12,7 +13,6 @@ import hashlib
 import json
 import math
 import re
-import subprocess
 import tempfile
 import time
 import urllib.error
@@ -28,17 +28,9 @@ class LigParGenError(RuntimeError):
 
 
 SECTION_NAMES = (
-    "Masses",
-    "Pair Coeffs",
-    "Bond Coeffs",
-    "Angle Coeffs",
-    "Dihedral Coeffs",
-    "Improper Coeffs",
-    "Atoms",
-    "Bonds",
-    "Angles",
-    "Dihedrals",
-    "Impropers",
+    "Masses", "Pair Coeffs", "Bond Coeffs", "Angle Coeffs",
+    "Dihedral Coeffs", "Improper Coeffs", "Atoms", "Bonds", "Angles",
+    "Dihedrals", "Impropers",
 )
 COUNT_KEYS = ("atoms", "bonds", "angles", "dihedrals", "impropers")
 TYPE_KEYS = ("atom", "bond", "angle", "dihedral", "improper")
@@ -51,13 +43,13 @@ CHARGE_MODELS = {
 
 def _is_ligpargen_data(text: str) -> bool:
     header = text[:1000].lower()
-    # Older files name LigParGen; newer files name the writer, Leela S. Dodda.
-    # This identifies the format; validation below checks the actual contents.
+    # Legacy output identifies LigParGen by name; current 3.x LAMMPS output
+    # identifies its writer (Leela S. Dodda) instead. Full structural and
+    # coefficient validation still runs after this format-recognition gate.
     signature = "ligpargen" in header or "leela s. dodda" in header
-    return signature and all(
-        re.search(rf"(?m)^\s*{re.escape(name)}\s*(?:#.*)?$", text)
-        for name in ("Masses", "Pair Coeffs", "Atoms", "Bonds")
-    )
+    return (signature
+            and all(re.search(rf"(?m)^\s*{re.escape(name)}\s*(?:#.*)?$", text)
+                    for name in ("Masses", "Pair Coeffs", "Atoms", "Bonds")))
 
 
 def read_artifact(source: Path) -> tuple[bytes, str | None]:
@@ -79,10 +71,7 @@ def read_artifact(source: Path) -> tuple[bytes, str | None]:
         with zipfile.ZipFile(source) as archive:
             candidates: list[tuple[str, bytes]] = []
             for info in archive.infolist():
-                if info.is_dir() or Path(info.filename).suffix.lower() not in {
-                    ".data",
-                    ".lmp",
-                }:
+                if info.is_dir() or Path(info.filename).suffix.lower() not in {".data", ".lmp"}:
                     continue
                 payload = archive.read(info)
                 try:
@@ -97,9 +86,7 @@ def read_artifact(source: Path) -> tuple[bytes, str | None]:
         raise LigParGenError("ZIP does not contain recognizable LigParGen LAMMPS data.")
     if len(candidates) > 1:
         names = ", ".join(name for name, _payload in candidates)
-        raise LigParGenError(
-            f"ZIP contains multiple LigParGen LAMMPS data files: {names}"
-        )
+        raise LigParGenError(f"ZIP contains multiple LigParGen LAMMPS data files: {names}")
     member, payload = candidates[0]
     return payload, member
 
@@ -174,8 +161,7 @@ def validate_ligpargen_text(text: str) -> dict:
         rows = sections[section_name]
         if len(rows) != expected:
             raise LigParGenError(
-                f"{section_name}: expected {expected} rows, found {len(rows)}"
-            )
+                f"{section_name}: expected {expected} rows, found {len(rows)}")
         _validate_ids(rows, expected, section_name)
         for row in rows:
             if len(row) < columns:
@@ -184,12 +170,9 @@ def validate_ligpargen_text(text: str) -> dict:
                 values = [float(value) for value in row[1:columns]]
             except ValueError as exc:
                 raise LigParGenError(
-                    f"Non-numeric coefficient in {section_name} row {row[0]}"
-                ) from exc
+                    f"Non-numeric coefficient in {section_name} row {row[0]}") from exc
             if not all(math.isfinite(value) for value in values):
-                raise LigParGenError(
-                    f"Non-finite coefficient in {section_name} row {row[0]}"
-                )
+                raise LigParGenError(f"Non-finite coefficient in {section_name} row {row[0]}")
 
     topology_specs = {
         "Atoms": (counts["atoms"], 7, "atom", 0),
@@ -200,17 +183,11 @@ def validate_ligpargen_text(text: str) -> dict:
     }
     atom_ids = set(range(1, counts["atoms"] + 1))
     charges: list[float] = []
-    for section_name, (
-        expected,
-        columns,
-        type_key,
-        atom_columns,
-    ) in topology_specs.items():
+    for section_name, (expected, columns, type_key, atom_columns) in topology_specs.items():
         rows = sections[section_name]
         if len(rows) != expected:
             raise LigParGenError(
-                f"{section_name}: expected {expected} rows, found {len(rows)}"
-            )
+                f"{section_name}: expected {expected} rows, found {len(rows)}")
         _validate_ids(rows, expected, section_name)
         for row in rows:
             if len(row) < columns:
@@ -227,18 +204,13 @@ def validate_ligpargen_text(text: str) -> dict:
                     values = [float(value) for value in row[3:7]]
                 except ValueError as exc:
                     raise LigParGenError(
-                        f"Invalid charge/coordinate in Atoms row {row[0]}"
-                    ) from exc
+                        f"Invalid charge/coordinate in Atoms row {row[0]}") from exc
                 if not all(math.isfinite(value) for value in values):
-                    raise LigParGenError(
-                        f"Non-finite charge/coordinate in Atoms row {row[0]}"
-                    )
+                    raise LigParGenError(f"Non-finite charge/coordinate in Atoms row {row[0]}")
                 charges.append(values[0])
             else:
-                referenced = [
-                    _integer(value, f"{section_name} atom ID")
-                    for value in row[2 : 2 + atom_columns]
-                ]
+                referenced = [_integer(value, f"{section_name} atom ID")
+                              for value in row[2:2 + atom_columns]]
                 invalid = [value for value in referenced if value not in atom_ids]
                 if invalid:
                     raise LigParGenError(
@@ -277,18 +249,12 @@ def repair_known_ligpargen_header_issues(text: str) -> tuple[str, list[str]]:
     pattern = re.compile(r"(?m)^(\s*)\d+(\s+impropers\s*)$")
     repaired, changes = pattern.subn(
         lambda match: f"{match.group(1)}{actual_impropers}{match.group(2)}",
-        text,
-        count=1,
-    )
+        text, count=1)
     if changes != 1:
-        raise LigParGenError(
-            "Could not repair inconsistent LigParGen improper count header"
-        )
-    note = (
-        f"Corrected LigParGen improper interaction header from "
-        f"{counts['impropers']} to {actual_impropers}; coefficient and topology "
-        "rows were not changed."
-    )
+        raise LigParGenError("Could not repair inconsistent LigParGen improper count header")
+    note = (f"Corrected LigParGen improper interaction header from "
+            f"{counts['impropers']} to {actual_impropers}; coefficient and topology "
+            "rows were not changed.")
     return repaired, [note]
 
 
@@ -327,8 +293,7 @@ def import_ligpargen(
         raise LigParGenError(f"Output directory is not empty: {out_dir}")
     source_payload, archive_member = read_artifact(source)
     repaired_text, repairs = repair_known_ligpargen_header_issues(
-        source_payload.decode("utf-8")
-    )
+        source_payload.decode("utf-8"))
     payload = repaired_text.encode("utf-8")
     validation = validate_ligpargen_text(repaired_text)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -365,8 +330,7 @@ def import_ligpargen(
     if audit_context:
         audit.update(audit_context)
     (out_dir / "audit.json").write_text(
-        json.dumps(audit, indent=2) + "\n", encoding="utf-8"
-    )
+        json.dumps(audit, indent=2) + "\n", encoding="utf-8")
     return audit
 
 
@@ -374,19 +338,14 @@ def _json_request(url: str, payload: dict, timeout: float) -> dict:
     request = urllib.request.Request(
         url,
         data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "User-Agent": "ff-parameterizer/1",
-        },
+        headers={"Content-Type": "application/json", "User-Agent": "ff-parameterizer/1"},
         method="POST",
     )
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             return json.loads(response.read().decode("utf-8"))
     except (urllib.error.URLError, json.JSONDecodeError) as exc:
-        raise LigParGenError(
-            f"Could not submit the SMILES to LigParGen: {exc}"
-        ) from exc
+        raise LigParGenError(f"Could not submit the SMILES to LigParGen: {exc}") from exc
 
 
 def _read_gradio_result(url: str, timeout: float) -> list[Any]:
@@ -396,29 +355,21 @@ def _read_gradio_result(url: str, timeout: float) -> list[Any]:
             event = ""
             for raw in response:
                 if time.monotonic() > deadline:
-                    raise LigParGenError(
-                        "LigParGen timed out while generating parameters."
-                    )
+                    raise LigParGenError("LigParGen timed out while generating parameters.")
                 line = raw.decode("utf-8", errors="replace").rstrip("\r\n")
                 if line.startswith("event:"):
                     event = line.split(":", 1)[1].strip()
                 elif line.startswith("data:"):
                     value = line.split(":", 1)[1].strip()
                     if event == "error":
-                        raise LigParGenError(
-                            f"LigParGen rejected the molecule: {value}"
-                        )
+                        raise LigParGenError(f"LigParGen rejected the molecule: {value}")
                     if event == "complete":
                         try:
                             result = json.loads(value)
                         except json.JSONDecodeError as exc:
-                            raise LigParGenError(
-                                "LigParGen returned an unreadable result."
-                            ) from exc
+                            raise LigParGenError("LigParGen returned an unreadable result.") from exc
                         if not isinstance(result, list):
-                            raise LigParGenError(
-                                "LigParGen returned an unexpected result."
-                            )
+                            raise LigParGenError("LigParGen returned an unexpected result.")
                         return result
     except urllib.error.URLError as exc:
         raise LigParGenError(f"Lost connection to LigParGen: {exc}") from exc
@@ -445,13 +396,9 @@ def _find_zip_url(value: Any) -> str | None:
 def _download(url: str, destination: Path, timeout: float) -> None:
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme != "https":
-        raise LigParGenError(
-            "LigParGen returned a non-HTTPS download URL; refusing it."
-        )
+        raise LigParGenError("LigParGen returned a non-HTTPS download URL; refusing it.")
     try:
-        request = urllib.request.Request(
-            url, headers={"User-Agent": "ff-parameterizer/1"}
-        )
+        request = urllib.request.Request(url, headers={"User-Agent": "ff-parameterizer/1"})
         with urllib.request.urlopen(request, timeout=timeout) as response:
             destination.write_bytes(response.read())
     except urllib.error.URLError as exc:
@@ -478,99 +425,24 @@ def generate_with_ligpargen_space(
     if charge_model not in CHARGE_MODELS:
         raise LigParGenError("Charge model must be CM1A or CM1A-LBCC.")
     if charge_model == "CM1A-LBCC" and charge != 0:
-        raise LigParGenError(
-            "CM1A-LBCC is only available for neutral molecules (charge 0)."
-        )
+        raise LigParGenError("CM1A-LBCC is only available for neutral molecules (charge 0).")
 
     base = space_url.rstrip("/")
     submit_url = f"{base}/gradio_api/call/run_ligpargen"
-    submitted = _json_request(
-        submit_url,
-        {"data": [smiles, None, str(opt), CHARGE_MODELS[charge_model], str(charge)]},
-        timeout,
-    )
+    submitted = _json_request(submit_url, {
+        "data": [smiles, None, str(opt), CHARGE_MODELS[charge_model], str(charge)]
+    }, timeout)
     event_id = submitted.get("event_id")
     if not isinstance(event_id, str) or not event_id:
         raise LigParGenError("LigParGen did not return a job identifier.")
-    result = _read_gradio_result(
-        f"{submit_url}/{urllib.parse.quote(event_id)}", timeout
-    )
+    result = _read_gradio_result(f"{submit_url}/{urllib.parse.quote(event_id)}", timeout)
     zip_url = _find_zip_url(result)
     if not zip_url:
-        raise LigParGenError(
-            "LigParGen completed but did not return a downloadable ZIP."
-        )
+        raise LigParGenError("LigParGen completed but did not return a downloadable ZIP.")
     _download(urllib.parse.urljoin(base + "/", zip_url), destination, timeout)
     if not zipfile.is_zipfile(destination):
         raise LigParGenError("The LigParGen download is not a valid ZIP archive.")
     return {"runner": "web", "service": base, "event_id": event_id}
-
-
-def generate_with_ligpargen_docker(
-    smiles: str,
-    destination: Path,
-    charge: int = 0,
-    opt: int = 0,
-    charge_model: str = "CM1A-LBCC",
-    timeout: float = 180.0,
-    image: str = "ligpargen:dev",
-) -> dict:
-    """Run the current LigParGen CLI image, which must include the user's BOSS."""
-    if charge_model == "CM1A-LBCC" and charge != 0:
-        raise LigParGenError(
-            "CM1A-LBCC is only available for neutral molecules (charge 0)."
-        )
-    with tempfile.TemporaryDirectory(prefix="ligpargen_docker_") as tmp:
-        work = Path(tmp)
-        command = [
-            "docker",
-            "run",
-            "--rm",
-            "-v",
-            f"{work}:/work",
-            "-w",
-            "/work",
-            image,
-            "-s",
-            smiles,
-            "-r",
-            "LPG",
-            "-c",
-            str(charge),
-            "-o",
-            str(opt),
-        ]
-        if charge_model == "CM1A-LBCC":
-            command.append("-l")
-        try:
-            completed = subprocess.run(
-                command,
-                text=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                timeout=timeout,
-                check=False,
-            )
-        except FileNotFoundError as exc:
-            raise LigParGenError("Docker is not installed or is not on PATH.") from exc
-        except subprocess.TimeoutExpired as exc:
-            raise LigParGenError("The local LigParGen Docker job timed out.") from exc
-        if completed.returncode != 0:
-            tail = completed.stdout[-3000:].strip()
-            raise LigParGenError(
-                f"LigParGen Docker failed (exit {completed.returncode}):\n{tail}"
-            )
-        candidates = [path for path in work.rglob("*.zip") if zipfile.is_zipfile(path)]
-        if len(candidates) != 1:
-            raise LigParGenError(
-                f"Expected one LigParGen ZIP from Docker, found {len(candidates)}."
-            )
-        destination.write_bytes(candidates[0].read_bytes())
-        return {
-            "runner": "docker",
-            "docker_image": image,
-            "log": completed.stdout[-10000:],
-        }
 
 
 def parameterize_smiles(
@@ -580,26 +452,16 @@ def parameterize_smiles(
     charge: int = 0,
     opt: int = 0,
     charge_model: str = "CM1A-LBCC",
-    runner: str = "web",
     timeout: float = 180.0,
     space_url: str = DEFAULT_SPACE_URL,
-    docker_image: str = "ligpargen:dev",
 ) -> dict:
     """Generate native LigParGen output from SMILES, then validate its LAMMPS data."""
     if out_dir.exists() and any(out_dir.iterdir()):
         raise LigParGenError(f"Output directory is not empty: {out_dir}")
     with tempfile.TemporaryDirectory(prefix="ligpargen_smiles_") as tmp:
         archive = Path(tmp) / "ligpargen_result.zip"
-        if runner == "web":
-            generation = generate_with_ligpargen_space(
-                smiles, archive, charge, opt, charge_model, timeout, space_url
-            )
-        elif runner == "docker":
-            generation = generate_with_ligpargen_docker(
-                smiles, archive, charge, opt, charge_model, timeout, docker_image
-            )
-        else:
-            raise LigParGenError("LigParGen runner must be 'web' or 'docker'.")
+        generation = generate_with_ligpargen_space(
+            smiles, archive, charge, opt, charge_model, timeout, space_url)
         context = {
             "input": "SMILES",
             "input_smiles": smiles,

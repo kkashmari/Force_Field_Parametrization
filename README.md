@@ -3,8 +3,9 @@
 This package combines a native LigParGen OPLS-AA importer, the corrected
 `.frc` builder, and automatic GAFF2 and UFF pipelines.
 
-Khatereh Kashmari  
-Date: 2026-21-08  
+Author: Khatereh Kashmari  
+Date: 2026-08-10  
+Version: 8.0.0
 
 ### Required packages
 
@@ -26,6 +27,14 @@ python3 parameterize.py
 ```
 
 The command-line arguments described below remain available for batch jobs.
+
+## Desktop GUI
+
+On macOS, double-click `launch_gui.command`, or run:
+
+```bash
+/usr/local/Caskroom/miniforge/base/envs/ffbuild/bin/python parameterize_gui.py
+```
 
 Choose the input, force field, and output folder, then click **Run
 parameterization**. GAFF2-specific fields and existing `.frc` fields appear
@@ -58,7 +67,9 @@ downloaded LAMMPS data file or complete ZIP bundle:
 ```bash
 python parameterize.py molecule.lmp --ff ligpargen -o molecule_opls
 ```
-It validates the native LigParGen/BOSS LAMMPS topology
+
+This workflow does not use a Tinker `.frc`, retype atoms, recalculate charges,
+or alter coefficients. It validates the native LigParGen/BOSS LAMMPS topology
 and coefficient tables, preserves the data, and creates a `run 0` input
 with the required OPLS styles. Outputs are the copied `.data`,
 `in.*_ligpargen_opls`, and `audit.json`. ZIP input is supported when it
@@ -81,7 +92,8 @@ selected types are preserved and the completed data file is written inside the
 requested output directory.
 
 The builder reports exact, equivalence, wildcard/similarity fallback, and
-missing counts. Missing terms remain visible in the report
+missing counts. Missing terms remain visible in the report and must not be
+called successful parameterization.
 
 ## GAFF2
 
