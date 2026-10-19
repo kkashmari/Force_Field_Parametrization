@@ -14,10 +14,9 @@ import sys
 from pathlib import Path
 
 
-# Defaults for running without command-line arguments.
 
 INPUT_DIRECTORY = Path(
-    "/Users/khatereh/Desktop/Research/Polymer_CoScientist/ff_parameterization_tool"
+    ""
 )
 INPUT_POSCAR_NAME = "amor_model.vasp"
 OUTPUT_DIRECTORY = INPUT_DIRECTORY / "amor_model_UFF_generated"
