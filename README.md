@@ -52,10 +52,6 @@ for example, `--charge -1 --ligpargen-charge-model CM1A`. Optimization can be
 `0`, `1`, `2`, or `3`. The default runner is LigParGen's public web service.
 The submitted SMILES is sent to that service and its job/rate limits apply.
 
-To use a local LigParGen Docker image built with your licensed BOSS install,
-add `--ligpargen-runner docker`. The default image is `ligpargen:dev`; override
-it with `--ligpargen-docker-image IMAGE`.
-
 You can still generate the molecule manually on LigParGen and import its
 downloaded LAMMPS data file or complete ZIP bundle:
 
